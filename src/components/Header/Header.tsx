@@ -81,7 +81,7 @@ export const Header: FC = () => {
       ) : (
         <nav className="main-nav">
           {HEADER_NAV.map((item, i) => {
-            if (item.disabled) return <></>
+            if (item.disabled) return <React.Fragment key={i}></React.Fragment>
             return (
               <div
                 key={i}
