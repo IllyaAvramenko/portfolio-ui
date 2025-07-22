@@ -39,10 +39,9 @@ export const HomePage: FC = () => {
                 {/* eslint-disable-next-line */}
                 <p className="quote-symbol">//</p>
                 <blockquote className="quote-text">
-                    In these paintings, formal considerations take a back seat to contrasting tonalities and color
-                    harmonies. The effect is both poetic and sublime.
+                    Art became my refuge, and later — my voice.
                 </blockquote>
-                <cite className="quote-author">— Michael Greavy</cite>
+                <cite className="quote-author">— Anna Budzinska</cite>
             </section>
             <section className="image-slider-wrapper">
                 <button ref={prevRef} className="custom-nav-button prev-button">&#8249;</button>
