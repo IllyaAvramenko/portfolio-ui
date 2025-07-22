@@ -38,8 +38,8 @@ export const HamburgerMenu: FC<HamburgerMenuProps> = ({ navItems }) => {
       <div className={cn('hamburger-overlay', { show: isOpen })} onClick={toggleMenu}></div>
       <div className={cn('hamburger-menu', { open: isOpen })}>
         <nav className="hamburger-nav">
-          {navItems.map((item) => {
-            if (item.disabled) return <></>
+          {navItems.map((item, i) => {
+            if (item.disabled) return <React.Fragment key={i}></React.Fragment>
             return (
               <div key={item.url}>
                 <div
