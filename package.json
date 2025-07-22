@@ -13,6 +13,7 @@
     "@types/react-dom": "^19.1.6",
     "axios": "^1.10.0",
     "classnames": "^2.5.1",
+    "core-js": "^3.44.0",
     "formik": "^2.4.6",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -22,6 +23,7 @@
     "swiper": "^11.2.10",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4",
+    "whatwg-fetch": "^3.6.20",
     "yup": "^1.6.1"
   },
   "scripts": {
@@ -40,7 +42,11 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "ie 11",
+      "Android >= 5",
+      "Chrome >= 49",
+      "Safari >= 10"
     ],
     "development": [
       "last 1 chrome version",

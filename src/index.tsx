@@ -1,4 +1,6 @@
 import React from 'react';
+import 'core-js';
+import 'whatwg-fetch';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
