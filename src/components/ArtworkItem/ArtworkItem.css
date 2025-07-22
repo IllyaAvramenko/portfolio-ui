@@ -1,0 +1,18 @@
+.artwork-item {
+  cursor: pointer;
+  flex: 1 0 calc(50% - 2rem);
+  box-sizing: border-box;
+  transition: transform 0.2s;
+  
+}
+
+.artwork-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.2s;
+}
+
+.artwork-item img:hover {
+  transform: scale(1.01);
+}

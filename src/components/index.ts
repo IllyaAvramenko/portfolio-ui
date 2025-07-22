@@ -1,0 +1,13 @@
+export { Header } from "./Header/Header";
+export { Footer } from "./Footer/Footer";
+export { Tabs, Tab } from "./Tabs/Tabs";
+export { AccordionTabs } from "./AccordionTabs/AccordionTabs";
+export { Input } from "./Input/Input";
+export { Button } from "./Button/Button";
+export { Loader } from "./Loader/Loader";
+export { ArtworkGrid } from "./ArtworkGrid/ArtworkGrid";
+export { Modal } from "./Modal/Modal";
+export { ArtworkItem } from "./ArtworkItem/ArtworkItem";
+export { CardIcon } from './icons/Card/CardIcon';
+export { Title } from './Title/Title';
+export { Paragraph } from './Paragraph/Paragraph';

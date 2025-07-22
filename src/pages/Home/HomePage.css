@@ -1,0 +1,124 @@
+/* Загальні стилі, які залишаються */
+.home {
+  background-color: white;
+  text-align: center;
+  padding: 4rem 1rem;
+  color: #222;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.quote {
+  margin: 25px 0px 50px;
+}
+
+.quote-symbol {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: #999;
+}
+
+.quote-text {
+  max-width: 80%;
+  margin: 0 auto;
+  font-size: 20px;
+  line-height: 1.6;
+  color: #444;
+}
+
+.quote-author {
+  display: block;
+  margin-top: 20px;
+  font-size: 0.875rem;
+  color: #999;
+}
+
+.image-slider-wrapper {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.slider-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  object-fit: cover;
+}
+
+.custom-nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  padding: 10px 15px;
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 50%;
+  user-select: none;
+}
+
+.custom-nav-button:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.prev-button {
+  left: -40px;
+}
+
+.next-button {
+  right: -40px;
+}
+
+/* Адаптивні стилі */
+@media (max-width: 768px) {
+  .home {
+    padding: 3rem 0.5rem;
+  }
+
+  .quote {
+    margin: 20px 0px 20px;
+  }
+
+  .quote-text {
+    max-width: 90%;
+    font-size: 18px;
+  }
+
+  .quote-author {
+    font-size: 0.75rem;
+  }
+
+  .custom-nav-button {
+    padding: 8px 10px;
+    font-size: 1.5rem;
+  }
+
+  .prev-button {
+    left: -20px;
+  }
+
+  .next-button {
+    right: -20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .quote-symbol {
+    font-size: 1rem;
+  }
+
+  .quote-text {
+    font-size: 16px;
+  }
+
+  .custom-nav-button {
+    padding: 6px 8px;
+    font-size: 1.25rem;
+  }
+}

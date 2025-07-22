@@ -1,0 +1,25 @@
+.artworks-title {
+  padding-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.desktop-tabs {
+  display: block;
+  margin-top: 3rem;
+}
+
+.mobile-accordion {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-tabs {
+    display: none;
+  }
+
+  .mobile-accordion {
+    display: block;
+  }
+}

@@ -1,0 +1,19 @@
+.footer {
+  background-color: #201a16;
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.footer__icon {
+  color: white;
+  font-size: 24px;
+  transition: transform 0.3s, color 0.3s;
+  cursor: pointer;
+}
+
+.footer__icon:hover {
+  color: #ccc;
+  transform: scale(1.1);
+}

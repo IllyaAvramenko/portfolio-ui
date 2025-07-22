@@ -1,0 +1,131 @@
+header {
+    background-color: #201a16;
+    color: white;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.nav__item {
+    color: white;
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.nav__item:hover, .nav__item.active {
+  color: #9c9999;
+}
+
+.nav__item-wrapper .contact-btn {
+  padding: 12px 22px;
+  border: 2px solid white;
+  text-decoration: none;
+  color: white;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.contact-btn:hover {
+  color: #201a16;
+  background-color: white;
+}
+
+.nav__item-wrapper {
+  position: relative;
+}
+
+/* Dropdown - анімоване з'явлення */
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #201a16;
+  padding: 10px 0;
+  min-width: 180px;
+  z-index: 10;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.nav__item-wrapper:hover .dropdown {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Dropdown items */
+.dropdown__item {
+  display: block;
+  padding: 8px 16px;
+  color: white;
+  text-decoration: none;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  transition: 0.3s;
+}
+
+.dropdown__item:hover, .dropdown__item.active {
+  color: #9c9999;
+}
+
+/* Адаптивні стилі */
+@media (max-width: 768px) {
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  header {
+    gap: 20px;
+    padding: 10px 20px;
+  }
+
+  .main-nav {
+    gap: 15px;
+  }
+
+  .nav__item {
+    font-size: 0.75rem;
+  }
+
+  .nav__item-wrapper .contact-btn {
+    padding: 10px 20px;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1rem;
+  }
+
+  .nav__item {
+    font-size: 0.7rem;
+  }
+
+  .nav__item-wrapper .contact-btn {
+    padding: 9px 18px;
+    font-size: 0.7rem;
+  }
+}

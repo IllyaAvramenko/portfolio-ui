@@ -1,0 +1,131 @@
+.contact-wrapper {
+  padding: 2rem 1.5rem;
+  max-width: 1200px;
+  margin: auto;
+  background: white;
+  color: #1a1a1a;
+}
+
+.contact-description {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+
+.contact-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.contact-image {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.image-frame {
+  background-color: white;
+  width: 100%;
+  box-sizing: border-box;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  width: 50%;
+  margin-left: 2rem;
+}
+
+.contact-form > *:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.submit-btn {
+  background-color: #1a1613;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-weight: bold;
+  cursor: pointer;
+  width: fit-content;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  background-color: #333;
+}
+
+.success-message {
+  color: #28a745;
+  margin-top: 10px;
+}
+
+.error-message {
+  color: #dc3545;
+  margin-top: 10px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .contact-content {
+    flex-direction: column;
+  }
+  .contact-image {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .image-frame {
+    aspect-ratio: 4 / 3;
+  }
+
+  .contact-form {
+    margin: 0;
+    width: 100%;
+    margin: 1rem 0 0 0;
+  }
+
+  .form-row {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 992px) {
+  
+  .contact-wrapper {
+    padding: 2rem 0.5rem;
+  }
+  
+  .contact-description {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .contact-form {
+    max-width: none;
+  }
+  .form-row {
+    flex-direction: column;
+  }
+}

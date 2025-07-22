@@ -1,0 +1,26 @@
+.card-icon {
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-back {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.card-front {
+  transition: transform 0.3s ease;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translate(-10px, -10px);
+}
+
+.card-icon:hover .card-back {
+  opacity: 1;
+  transform: translate(0, 0);
+}

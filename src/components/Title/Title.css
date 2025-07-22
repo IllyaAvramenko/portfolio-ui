@@ -1,0 +1,42 @@
+.title {
+  margin-bottom: 0.5rem;
+}
+
+.title-small {
+  font-size: 1rem;
+}
+
+.title-medium {
+  font-size: 1.5rem;
+}
+
+.title-large {
+  font-size: 2rem;
+}
+
+.title-normal {
+  font-weight: normal;
+}
+
+.title-bold {
+  font-weight: bold;
+}
+
+/* Media query for small screens */
+@media (max-width: 600px) {
+  .title {
+    margin-bottom: 0.75rem; /* Adjust margin for small screens */
+  }
+
+  .title-small {
+    font-size: 0.875rem; /* Smaller font size for small screens */
+  }
+
+  .title-medium {
+    font-size: 1.25rem; /* Smaller font size for small screens */
+  }
+
+  .title-large {
+    font-size: 1.75rem; /* Smaller font size for large titles on small screens */
+  }
+}

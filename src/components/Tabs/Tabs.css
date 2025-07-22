@@ -1,0 +1,73 @@
+.tabs-wrapper {
+  display: flex;
+  padding: 1em 0;
+  gap: 4rem;
+  max-width: 100%;
+}
+
+.tabs-nav {
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  padding-left: 0;
+}
+
+.tabs-nav__wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.tabs-title {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  color: #222;
+}
+
+.tab-label {
+  font-size: 1rem;
+  font-weight: 300;
+  color: #aaa;
+  cursor: pointer;
+  padding: 0.2rem 0;
+  transition: color 0.2s ease;
+}
+
+.tab-label:hover {
+  color: #444;
+}
+
+.tab-label.active {
+  color: #111;
+  font-weight: 400;
+}
+
+.tab-label.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.tab-content {
+  flex: 1;
+}
+
+/* Додати медіа-запити для адаптації */
+@media (max-width: 1024px) {
+  .tabs-wrapper {
+    gap: 1rem;
+    padding: 2rem 0;
+  }
+
+  .tabs-nav {
+    width: 170px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tabs-nav {
+    display: none; /* Приховувати таби на малих екранах */
+  }
+}
