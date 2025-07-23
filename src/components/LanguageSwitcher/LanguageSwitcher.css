@@ -11,7 +11,7 @@
   padding: 5px 10px;
   cursor: pointer;
   font-size: 0.85rem;
-  border-radius: 4px;
+  border-radius: 2px;
   transition: background-color 0.3s, color 0.3s;
   display: flex;
   align-items: center;
@@ -38,7 +38,7 @@
   top: 100%;
   left: 0;
   background-color: #201a16;
-  border-radius: 4px;
+  border-radius: 2px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   list-style: none;
   padding: 0;
@@ -56,16 +56,14 @@
 }
 
 .dropdown-item {
+  font-weight: normal;
   padding: 8px 16px;
   cursor: pointer;
   color: white;
   transition: background-color 0.3s, color 0.3s;
 }
 
-.dropdown-item:hover {
+.dropdown-item:hover,
+.dropdown-item.selected{
   color: #9c9999;
-}
-
-.dropdown-item.selected {
-  font-weight: bold;
 }
