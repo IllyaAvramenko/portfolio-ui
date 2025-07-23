@@ -1,11 +1,12 @@
-.tabs-wrapper {
+.tabs {
   display: flex;
   padding: 1em 0;
   gap: 4rem;
   max-width: 100%;
+  margin-top: 3rem;
 }
 
-.tabs-nav {
+.tabs-content {
   width: 220px;
   display: flex;
   flex-direction: column;
@@ -13,7 +14,7 @@
   padding-left: 0;
 }
 
-.tabs-nav__wrap {
+.tabs-nav__list {
     display: flex;
     flex-direction: column;
     align-items: baseline;
@@ -54,20 +55,70 @@
   flex: 1;
 }
 
-/* Додати медіа-запити для адаптації */
 @media (max-width: 1024px) {
-  .tabs-wrapper {
+  .tabs {
     gap: 1rem;
-    padding: 2rem 0;
   }
 
-  .tabs-nav {
+  .tabs-content {
     width: 170px;
   }
 }
 
 @media (max-width: 768px) {
-  .tabs-nav {
-    display: none; /* Приховувати таби на малих екранах */
+  .tabs {
+    margin-top: 0;
+  }
+  .tabs-content {
+    display: none;
   }
 }
+
+/* Accordion mode */
+.accordion-mode {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.accordion-toggle {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #222;
+  cursor: pointer;
+}
+
+.accordion-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.accordion-tab-label {
+  font-size: 1rem;
+  font-weight: 300;
+  color: #aaa;
+  cursor: pointer;
+  padding: 0.4rem 0;
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.accordion-tab-label:hover {
+  color: #444;
+}
+
+.accordion-tab-label.active {
+  color: #111;
+  font-weight: 400;
+}
+
+.accordion-tab-label.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+

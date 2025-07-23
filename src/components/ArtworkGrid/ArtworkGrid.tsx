@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./ArtworkGrid.css";
 import { ArtworkItem } from "../ArtworkItem/ArtworkItem";
 import { Modal } from "../Modal/Modal";
-// import { CardIcon } from "../icons/Card/CardIcon";
 
 type ArtworkProps = {
   title: string;
@@ -39,10 +38,10 @@ const artworks: ArtworkProps[] = [
 ];
 
 export const ArtworkGrid: React.FC = () => {
-  const [isSingleColumn, setIsSingleColumn] = useState(false);
+  const [isSingleColumn] = useState(false);
   const [selectedArtwork, setSelectedArtwork] = useState<ArtworkProps | null>(null);
 
-  const toggleColumn = () => setIsSingleColumn((prev) => !prev);
+  // const toggleColumn = () => setIsSingleColumn((prev) => !prev);
 
   const openModal = (artwork: ArtworkProps) => setSelectedArtwork(artwork);
   const closeModal = () => setSelectedArtwork(null);

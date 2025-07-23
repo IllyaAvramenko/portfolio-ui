@@ -5,21 +5,21 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import './HomePage.css';
 
-// const imageUrls = [
-//   'https://picsum.photos/800/500?random=1',
-//   'https://picsum.photos/800/500?random=2',
-//   'https://picsum.photos/800/500?random=3',
-//   'https://picsum.photos/800/500?random=4',
-//   'https://picsum.photos/800/500?random=5',
-//   'https://picsum.photos/800/500?random=6',
-// ];
-
 const imageUrls = [
-    'https://www.dropbox.com/scl/fi/ww15ml9rc0ke9aw7r2kko/image.jpg?rlkey=5dtn42w5tfk4publvvg8hhm8d&st=obn008ki&raw=1',
-    'https://www.dropbox.com/scl/fi/x4qo7twysbt2nyw1pw6td/image2.jpg?rlkey=dklfh8js0kyks2cmej6by10a3&st=hnqup0zv&raw=1',
-    'https://www.dropbox.com/scl/fi/tuygpgjkdglq111jm2aop/image3.jpg?rlkey=eutojlaeunyensh9ybzc6j88z&st=fe39b0pb&raw=1',
-    'https://www.dropbox.com/scl/fi/qfsbdna7h4f5hvxop6fqz/image4.jpg?rlkey=ceuuf726pgpb2sbjb5s8o2t2h&st=7vpkld27&raw=1'
+  'https://picsum.photos/800/500?random=1',
+  'https://picsum.photos/800/500?random=2',
+  'https://picsum.photos/800/500?random=3',
+  'https://picsum.photos/800/500?random=4',
+  'https://picsum.photos/800/500?random=5',
+  'https://picsum.photos/800/500?random=6',
 ];
+
+// const imageUrls = [
+//     'https://www.dropbox.com/scl/fi/ww15ml9rc0ke9aw7r2kko/image.jpg?rlkey=5dtn42w5tfk4publvvg8hhm8d&st=obn008ki&raw=1',
+//     'https://www.dropbox.com/scl/fi/x4qo7twysbt2nyw1pw6td/image2.jpg?rlkey=dklfh8js0kyks2cmej6by10a3&st=hnqup0zv&raw=1',
+//     'https://www.dropbox.com/scl/fi/tuygpgjkdglq111jm2aop/image3.jpg?rlkey=eutojlaeunyensh9ybzc6j88z&st=fe39b0pb&raw=1',
+//     'https://www.dropbox.com/scl/fi/qfsbdna7h4f5hvxop6fqz/image4.jpg?rlkey=ceuuf726pgpb2sbjb5s8o2t2h&st=7vpkld27&raw=1'
+// ];
 
 
 export const HomePage: FC = () => {
