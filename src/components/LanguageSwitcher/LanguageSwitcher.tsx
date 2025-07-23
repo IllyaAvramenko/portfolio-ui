@@ -1,7 +1,9 @@
-import React, { useRef } from 'react';
+import React, {FC, useRef} from 'react';
 import './LanguageSwitcher.css';
-import { FaChevronDown } from 'react-icons/fa';
+import {FaChevronDown} from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
+
+const ArrowIcon = FaChevronDown as FC<any>;
 
 export const LanguageSwitcher: React.FC = () => {
   const { i18n } = useTranslation();
@@ -31,7 +33,7 @@ export const LanguageSwitcher: React.FC = () => {
     <div className="custom-dropdown" onMouseEnter={removeInlineStyle}>
       <button className="dropdown-toggle">
         {selectedLanguage.label}
-        <FaChevronDown className="dropdown-icon" />
+        <ArrowIcon className="dropdown-icon" />
       </button>
       <ul className="dropdown-menu" ref={ref}>
         {languages.map((lang) => (

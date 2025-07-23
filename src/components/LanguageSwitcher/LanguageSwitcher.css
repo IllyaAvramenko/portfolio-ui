@@ -1,6 +1,7 @@
 .custom-dropdown {
   position: relative;
   display: inline-block;
+  margin-bottom: -3px;
 }
 
 .dropdown-toggle {
