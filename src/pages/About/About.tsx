@@ -28,9 +28,22 @@ export const AboutPage: FC = () => {
         </Tab>
   
         <Tab value="education" label="Education">
-          <Text 
-            title="Education" 
-            paragraphs={["Education content here..."]}
+          <Text
+            title="Education"
+            paragraphs={[
+              "School of Representational Art",
+              "Chicago, IL",
+              "1997 - 2001",
+              "",
+              "American Academy of Art",
+              "Chicago, IL",
+              "1996 - 1997",
+              "",
+              "B.A Columbia College",
+              "Columbia, MO",
+              "1975 - 1979"
+            ]}
+            grouped
           />
         </Tab>
       </Tabs>

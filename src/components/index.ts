@@ -12,3 +12,4 @@ export { Title } from './Title/Title';
 export { Paragraph } from './Paragraph/Paragraph';
 export { Text } from './Text/Text';
 export { Image } from './Image/Image';
+export { Main } from './Main/Main';
