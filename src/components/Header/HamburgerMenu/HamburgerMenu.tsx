@@ -4,12 +4,15 @@ import './HamburgerMenu.css';
 import cn from 'classnames';
 import { Button } from '../../Button/Button';
 import { isMenuItemActive, NavItem } from '../Header';
+import { useTranslation } from 'react-i18next';
+import { LanguageSwitcher } from '../../LanguageSwitcher/LanguageSwitcher';
 
 type HamburgerMenuProps = {
   navItems: NavItem[];
 };
 
 export const HamburgerMenu: FC<HamburgerMenuProps> = ({ navItems }) => {
+  const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
   const pathname = location.pathname;
@@ -73,9 +76,8 @@ export const HamburgerMenu: FC<HamburgerMenuProps> = ({ navItems }) => {
               </div>
             )
           })}
-          <Button onClick={() => handleNavigate("/contact")} kind='secondary' className='contact-button'>
-            CONTACT
-          </Button>
+          <LanguageSwitcher />
+          <Button onClick={() => handleNavigate("/contact")} kind='secondary' className='contact-button'>{t("header.contact")}</Button>
         </nav>
       </div>
     </>

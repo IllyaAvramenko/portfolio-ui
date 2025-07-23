@@ -90,8 +90,7 @@ header {
   color: #9c9999;
 }
 
-/* Адаптивні стилі */
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .logo {
     font-size: 1.2rem;
   }

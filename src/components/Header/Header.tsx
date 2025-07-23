@@ -4,6 +4,9 @@ import cn from 'classnames';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {HamburgerMenu} from './HamburgerMenu/HamburgerMenu';
 import { Button } from '../Button/Button';
+import { TFunction } from 'i18next';
+import { useTranslation } from 'react-i18next';
+import { LanguageSwitcher } from '../LanguageSwitcher/LanguageSwitcher';
 
 export type NavItem = {
   title: string;
@@ -16,25 +19,25 @@ export type NavItem = {
   disabled?: boolean;
 };
 
-const HEADER_NAV: NavItem[] = [
+const getHeaderNavigation = (t: TFunction): NavItem[] => [
   {
-    title: "Home",
+    title: t("header.home"),
     url: "/",
   },
   {
-    title: "Artwork",
+    title: t("header.artwork.title"),
     url: "/artwork",
     subitems: [
-      { title: "Paintings", url: "/artwork/paintings" },
-      { title: "Works on paper", url: "/artwork/works-on-paper" },
+      { title: t("header.artwork.paintings"), url: "/artwork/paintings" },
+      { title: t("header.artwork.worksOnPaper"), url: "/artwork/works-on-paper" },
     ],
   },
   {
-    title: "About",
+    title: t("header.about.title"),
     url: "/about",
     subitems: [
-      { title: "Bio", url: "/about/bio" },
-      { title: "Education", url: "/about/education" },
+      { title: t("header.about.bio"), url: "/about/bio" },
+      { title: t("header.about.education"), url: "/about/education" },
     ],
   },
   // {
@@ -42,11 +45,11 @@ const HEADER_NAV: NavItem[] = [
   //   url: "/mentoring",
   // },
   {
-    title: "Contact",
+    title: t("header.contact"),
     url: "/contact",
     className: "contact-btn",
     disabled: true
-  },
+  }
 ];
 
 export const isMenuItemActive = (item: NavItem, pathname: string) => {
@@ -55,11 +58,14 @@ export const isMenuItemActive = (item: NavItem, pathname: string) => {
 };
 
 export const Header: FC = () => {
+  const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
   const pathname = location.pathname;
 
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  const HEADER_NAV = getHeaderNavigation(t);
 
   const handleResize = () => {
     setIsMobile(window.innerWidth <= 768);
@@ -112,9 +118,8 @@ export const Header: FC = () => {
             )
           
           })}
-          <Button onClick={() => navigate("/contact")} kind='secondary' style={{ 'fontWeight': 'normal' }}>
-            CONTACT
-          </Button>
+          <LanguageSwitcher />
+          <Button onClick={() => navigate("/contact")} kind='secondary' style={{ 'fontWeight': 'normal' }}>{t("header.contact")}</Button>
         </nav>
       )}
     </header>

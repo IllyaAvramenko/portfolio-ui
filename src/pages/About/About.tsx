@@ -1,20 +1,23 @@
 import React, { FC } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Image, Tab, Tabs, Text } from '../../components';
+import { useTranslation } from 'react-i18next';
 
 export const AboutPage: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
   const activeKey = location.pathname.includes("bio") ? "bio" : "education";
 
   return (
     <div>
       <Tabs
-        title="About"
+        title={t('header.about.title')}
         activeKey={activeKey}
         onTabChange={(key) => navigate(`/about/${key}`)}
       >
-        <Tab value="bio" label="Bio">
+        <Tab value="bio" label={t('header.about.bio')}>
           <Image src="https://picsum.photos/800/500?random=10" alt="Description of image" />
           <Text 
             title="Artist Biography" 
@@ -27,7 +30,7 @@ export const AboutPage: FC = () => {
           />
         </Tab>
   
-        <Tab value="education" label="Education">
+        <Tab value="education" label={t('header.about.education')}>
           <Text
             title="Education"
             paragraphs={[

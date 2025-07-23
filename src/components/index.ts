@@ -13,3 +13,4 @@ export { Paragraph } from './Paragraph/Paragraph';
 export { Text } from './Text/Text';
 export { Image } from './Image/Image';
 export { Main } from './Main/Main';
+export { LanguageSwitcher } from './LanguageSwitcher/LanguageSwitcher';

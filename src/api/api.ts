@@ -11,10 +11,8 @@ export interface IContactFormData {
 }
 
 export const submitContactForm = async (data: IContactFormData) => {
-    console.log(API_BASE_URL)
     try {
         const res = await axios.post(`${API_BASE_URL}/api/contact`, data);
-        console.log(res)
         return res.data
     } catch (err) {
         throw new Error('Something went wrong');

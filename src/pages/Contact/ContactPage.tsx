@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import { Button, Input } from '../../components';
 import './ContactPage.css';
 import { IContactFormData, submitContactForm } from '../../api/api';
+import { useTranslation } from 'react-i18next';
 
 const validationSchema = Yup.object({
   firstName: Yup.string().required('Required field'),
@@ -14,6 +15,7 @@ const validationSchema = Yup.object({
 });
 
 export const ContactPage: React.FC = () => {
+  const { t } = useTranslation();
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -58,9 +60,7 @@ export const ContactPage: React.FC = () => {
 
   return (
     <div className="contact-wrapper">
-      <p className="contact-description">
-        Thank you for your interest in my work. Complete the form below and I will respond as soon as possible. Anna
-      </p>
+      <p className="contact-description">{t('contact.mainText')}</p>
 
       <div className="contact-content">
         <div className="contact-image">
@@ -73,21 +73,21 @@ export const ContactPage: React.FC = () => {
 
         <form onSubmit={formik.handleSubmit} className="contact-form">
           <div className="form-row">
-            <Input name="firstName" label="First Name" required />
-            <Input name="lastName" label="Last Name" required />
+            <Input name="firstName" label={t('contact.form.name')} required />
+            <Input name="lastName" label={t('contact.form.lastName')} required />
           </div>
           <div className="form-row">
-            <Input name="email" label="Email Address" type="email" required />
+            <Input name="email" label={t('contact.form.email')} type="email" required />
           </div>
           <div className="form-row">
-            <Input name="subject" label="Subject" required />
+            <Input name="subject" label={t('contact.form.subject')} required />
           </div>
-          <Input name="message" label="Message" as="textarea" rows={5} required />
+          <Input name="message" label={t('contact.form.message')} as="textarea" rows={5} required />
 
           {message && <div className="success-message">{message}</div>}
           {error && <div className="error-message">{error}</div>}
 
-          <Button type="submit" isLoading={formik.isSubmitting}>SUBMIT</Button>
+          <Button type="submit" isLoading={formik.isSubmitting}>{t('contact.form.submit')}</Button>
         </form>
         </FormikProvider>
       </div>

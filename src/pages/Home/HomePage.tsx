@@ -4,6 +4,7 @@ import {Navigation, Autoplay} from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import './HomePage.css';
+import { useTranslation } from 'react-i18next';
 
 const imageUrls = [
   'https://picsum.photos/800/500?random=1',
@@ -23,6 +24,8 @@ const imageUrls = [
 
 
 export const HomePage: FC = () => {
+    const { t } = useTranslation();
+
     const prevRef = useRef<HTMLButtonElement | null>(null);
     const nextRef = useRef<HTMLButtonElement | null>(null);
     const [navReady, setNavReady] = useState(false);
@@ -38,9 +41,7 @@ export const HomePage: FC = () => {
             <section className="quote">
                 {/* eslint-disable-next-line */}
                 <p className="quote-symbol">//</p>
-                <blockquote className="quote-text">
-                    Art became my refuge, and later — my voice.
-                </blockquote>
+                <blockquote className="quote-text">{t('home.quote')}</blockquote>
                 <cite className="quote-author">— Anna Budzinska</cite>
             </section>
             <section className="image-slider-wrapper">

@@ -1,0 +1,30 @@
+{
+    "header": {
+        "home": "Home",
+        "artwork": {
+            "title": "Artwork",
+            "paintings": "Paintings",
+            "worksOnPaper": "Works on paper"
+        },
+        "about": {
+            "title": "About",
+            "bio": "Bio",
+            "education": "Education"
+        },
+        "contact": "Contact"
+    },
+    "home": {
+        "quote": "Art became my refuge, and later — my voice."
+    },
+    "contact": {
+        "mainText": "Thank you for your interest in my work. Complete the form below and I will respond as soon as possible. Anna",
+        "form": {
+            "name": "First Name",
+            "lastName": "Last Name",
+            "email": "Email Address",
+            "subject": "Subject",
+            "message": "Message",
+            "submit": "Submit"
+        }
+    }
+}

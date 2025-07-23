@@ -11,6 +11,13 @@ interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button: FC<IProps> = ({ children, isLoading, disabled, kind = 'primary', className, ...props }) => {
+  const renderChildren = () => {
+    if (typeof children === 'string') {
+      return children.toUpperCase(); // Перетворення на великий регістр
+    }
+    return children;
+  };
+
   return (
     <button
       {...props}
@@ -19,7 +26,7 @@ export const Button: FC<IProps> = ({ children, isLoading, disabled, kind = 'prim
       })}
       disabled={disabled || isLoading}
     >
-      {isLoading ? <Loader /> : children}
+      {isLoading ? <Loader /> : renderChildren()}
     </button>
   );
 };
