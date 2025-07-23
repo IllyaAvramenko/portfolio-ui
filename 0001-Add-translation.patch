@@ -1,0 +1,768 @@
+From b10f702d6a085aaf0f61f51e3ad62fadd25d5d8e Mon Sep 17 00:00:00 2001
+From: Illya Avramenko <illya.avramenko@pwc.com>
+Date: Wed, 23 Jul 2025 15:06:07 +0300
+Subject: [PATCH] Add translation
+
+---
+ package-lock.json                             | 73 +++++++++++++++++++
+ package.json                                  |  2 +
+ src/App.tsx                                   |  1 +
+ src/api/api.ts                                |  2 -
+ src/components/Button/Button.tsx              |  9 ++-
+ .../Header/HamburgerMenu/HamburgerMenu.tsx    |  8 +-
+ src/components/Header/Header.css              |  3 +-
+ src/components/Header/Header.tsx              | 31 ++++----
+ .../LanguageSwitcher/LanguageSwitcher.css     | 70 ++++++++++++++++++
+ .../LanguageSwitcher/LanguageSwitcher.tsx     | 51 +++++++++++++
+ src/components/index.ts                       |  3 +-
+ src/i18n/en.json                              | 30 ++++++++
+ src/i18n/i18n.ts                              | 20 +++++
+ src/i18n/ua.json                              | 30 ++++++++
+ src/pages/About/About.tsx                     |  9 ++-
+ src/pages/Artworks/ArtworksPage.tsx           |  8 +-
+ src/pages/Contact/ContactPage.tsx             | 18 ++---
+ src/pages/Home/HomePage.tsx                   |  7 +-
+ 18 files changed, 335 insertions(+), 40 deletions(-)
+ create mode 100644 src/components/LanguageSwitcher/LanguageSwitcher.css
+ create mode 100644 src/components/LanguageSwitcher/LanguageSwitcher.tsx
+ create mode 100644 src/i18n/en.json
+ create mode 100644 src/i18n/i18n.ts
+ create mode 100644 src/i18n/ua.json
+
+diff --git a/package-lock.json b/package-lock.json
+index 23d02a1..05ca139 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -20,8 +20,10 @@
+         "classnames": "^2.5.1",
+         "core-js": "^3.44.0",
+         "formik": "^2.4.6",
++        "i18next": "^25.3.2",
+         "react": "^19.1.0",
+         "react-dom": "^19.1.0",
++        "react-i18next": "^15.6.1",
+         "react-icons": "^5.5.0",
+         "react-router-dom": "^7.6.3",
+         "react-scripts": "5.0.1",
+@@ -9108,6 +9110,14 @@
+         "node": ">=12"
+       }
+     },
++    "node_modules/html-parse-stringify": {
++      "version": "3.0.1",
++      "resolved": "https://registry.npmjs.org/html-parse-stringify/-/html-parse-stringify-3.0.1.tgz",
++      "integrity": "sha512-KknJ50kTInJ7qIScF3jeaFRpMpE8/lfiTdzf/twXyPBLAGrLRTmkz3AdTnKeh40X8k9L2fdYwEp/42WGXIRGcg==",
++      "dependencies": {
++        "void-elements": "3.1.0"
++      }
++    },
+     "node_modules/html-webpack-plugin": {
+       "version": "5.6.3",
+       "resolved": "https://registry.npmjs.org/html-webpack-plugin/-/html-webpack-plugin-5.6.3.tgz",
+@@ -9261,6 +9271,36 @@
+         "node": ">=10.17.0"
+       }
+     },
++    "node_modules/i18next": {
++      "version": "25.3.2",
++      "resolved": "https://registry.npmjs.org/i18next/-/i18next-25.3.2.tgz",
++      "integrity": "sha512-JSnbZDxRVbphc5jiptxr3o2zocy5dEqpVm9qCGdJwRNO+9saUJS0/u4LnM/13C23fUEWxAylPqKU/NpMV/IjqA==",
++      "funding": [
++        {
++          "type": "individual",
++          "url": "https://locize.com"
++        },
++        {
++          "type": "individual",
++          "url": "https://locize.com/i18next.html"
++        },
++        {
++          "type": "individual",
++          "url": "https://www.i18next.com/how-to/faq#i18next-is-awesome.-how-can-i-support-the-project"
++        }
++      ],
++      "dependencies": {
++        "@babel/runtime": "^7.27.6"
++      },
++      "peerDependencies": {
++        "typescript": "^5"
++      },
++      "peerDependenciesMeta": {
++        "typescript": {
++          "optional": true
++        }
++      }
++    },
+     "node_modules/iconv-lite": {
+       "version": "0.6.3",
+       "resolved": "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.6.3.tgz",
+@@ -14118,6 +14158,31 @@
+       "integrity": "sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==",
+       "license": "MIT"
+     },
++    "node_modules/react-i18next": {
++      "version": "15.6.1",
++      "resolved": "https://registry.npmjs.org/react-i18next/-/react-i18next-15.6.1.tgz",
++      "integrity": "sha512-uGrzSsOUUe2sDBG/+FJq2J1MM+Y4368/QW8OLEKSFvnDflHBbZhSd1u3UkW0Z06rMhZmnB/AQrhCpYfE5/5XNg==",
++      "dependencies": {
++        "@babel/runtime": "^7.27.6",
++        "html-parse-stringify": "^3.0.1"
++      },
++      "peerDependencies": {
++        "i18next": ">= 23.2.3",
++        "react": ">= 16.8.0",
++        "typescript": "^5"
++      },
++      "peerDependenciesMeta": {
++        "react-dom": {
++          "optional": true
++        },
++        "react-native": {
++          "optional": true
++        },
++        "typescript": {
++          "optional": true
++        }
++      }
++    },
+     "node_modules/react-icons": {
+       "version": "5.5.0",
+       "resolved": "https://registry.npmjs.org/react-icons/-/react-icons-5.5.0.tgz",
+@@ -16895,6 +16960,14 @@
+         "node": ">= 0.8"
+       }
+     },
++    "node_modules/void-elements": {
++      "version": "3.1.0",
++      "resolved": "https://registry.npmjs.org/void-elements/-/void-elements-3.1.0.tgz",
++      "integrity": "sha512-Dhxzh5HZuiHQhbvTW9AMetFfBHDMYpo23Uo9btPXgdYP+3T5S+p+jgNy7spra+veYhBP2dCSgxR/i2Y02h5/6w==",
++      "engines": {
++        "node": ">=0.10.0"
++      }
++    },
+     "node_modules/w3c-hr-time": {
+       "version": "1.0.2",
+       "resolved": "https://registry.npmjs.org/w3c-hr-time/-/w3c-hr-time-1.0.2.tgz",
+diff --git a/package.json b/package.json
+index 10aa4e5..3dc126e 100644
+--- a/package.json
++++ b/package.json
+@@ -15,8 +15,10 @@
+     "classnames": "^2.5.1",
+     "core-js": "^3.44.0",
+     "formik": "^2.4.6",
++    "i18next": "^25.3.2",
+     "react": "^19.1.0",
+     "react-dom": "^19.1.0",
++    "react-i18next": "^15.6.1",
+     "react-icons": "^5.5.0",
+     "react-router-dom": "^7.6.3",
+     "react-scripts": "5.0.1",
+diff --git a/src/App.tsx b/src/App.tsx
+index 53ec0cb..8521024 100644
+--- a/src/App.tsx
++++ b/src/App.tsx
+@@ -1,5 +1,6 @@
+ import React from 'react';
+ import './App.css';
++import './i18n/i18n';
+ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+ import { Footer, Header, Main } from './components';
+ 
+diff --git a/src/api/api.ts b/src/api/api.ts
+index 747c80f..9849d16 100644
+--- a/src/api/api.ts
++++ b/src/api/api.ts
+@@ -11,10 +11,8 @@ export interface IContactFormData {
+ }
+ 
+ export const submitContactForm = async (data: IContactFormData) => {
+-    console.log(API_BASE_URL)
+     try {
+         const res = await axios.post(`${API_BASE_URL}/api/contact`, data);
+-        console.log(res)
+         return res.data
+     } catch (err) {
+         throw new Error('Something went wrong');
+diff --git a/src/components/Button/Button.tsx b/src/components/Button/Button.tsx
+index 2010dfc..3989f32 100644
+--- a/src/components/Button/Button.tsx
++++ b/src/components/Button/Button.tsx
+@@ -11,6 +11,13 @@ interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+ }
+ 
+ export const Button: FC<IProps> = ({ children, isLoading, disabled, kind = 'primary', className, ...props }) => {
++  const renderChildren = () => {
++    if (typeof children === 'string') {
++      return children.toUpperCase(); // Перетворення на великий регістр
++    }
++    return children;
++  };
++
+   return (
+     <button
+       {...props}
+@@ -19,7 +26,7 @@ export const Button: FC<IProps> = ({ children, isLoading, disabled, kind = 'prim
+       })}
+       disabled={disabled || isLoading}
+     >
+-      {isLoading ? <Loader /> : children}
++      {isLoading ? <Loader /> : renderChildren()}
+     </button>
+   );
+ };
+\ No newline at end of file
+diff --git a/src/components/Header/HamburgerMenu/HamburgerMenu.tsx b/src/components/Header/HamburgerMenu/HamburgerMenu.tsx
+index 5410d54..e5f7550 100644
+--- a/src/components/Header/HamburgerMenu/HamburgerMenu.tsx
++++ b/src/components/Header/HamburgerMenu/HamburgerMenu.tsx
+@@ -4,12 +4,15 @@ import './HamburgerMenu.css';
+ import cn from 'classnames';
+ import { Button } from '../../Button/Button';
+ import { isMenuItemActive, NavItem } from '../Header';
++import { useTranslation } from 'react-i18next';
++import { LanguageSwitcher } from '../../LanguageSwitcher/LanguageSwitcher';
+ 
+ type HamburgerMenuProps = {
+   navItems: NavItem[];
+ };
+ 
+ export const HamburgerMenu: FC<HamburgerMenuProps> = ({ navItems }) => {
++  const { t } = useTranslation();
+   const location = useLocation();
+   const navigate = useNavigate();
+   const pathname = location.pathname;
+@@ -73,9 +76,8 @@ export const HamburgerMenu: FC<HamburgerMenuProps> = ({ navItems }) => {
+               </div>
+             )
+           })}
+-          <Button onClick={() => handleNavigate("/contact")} kind='secondary' className='contact-button'>
+-            CONTACT
+-          </Button>
++          <LanguageSwitcher />
++          <Button onClick={() => handleNavigate("/contact")} kind='secondary' className='contact-button'>{t("header.contact")}</Button>
+         </nav>
+       </div>
+     </>
+diff --git a/src/components/Header/Header.css b/src/components/Header/Header.css
+index 038760a..fefca6f 100644
+--- a/src/components/Header/Header.css
++++ b/src/components/Header/Header.css
+@@ -90,8 +90,7 @@ header {
+   color: #9c9999;
+ }
+ 
+-/* Адаптивні стилі */
+-@media (max-width: 768px) {
++@media (max-width: 800px) {
+   .logo {
+     font-size: 1.2rem;
+   }
+diff --git a/src/components/Header/Header.tsx b/src/components/Header/Header.tsx
+index 7382120..22e8dc9 100644
+--- a/src/components/Header/Header.tsx
++++ b/src/components/Header/Header.tsx
+@@ -4,6 +4,9 @@ import cn from 'classnames';
+ import { Link, useLocation, useNavigate } from 'react-router-dom';
+ import {HamburgerMenu} from './HamburgerMenu/HamburgerMenu';
+ import { Button } from '../Button/Button';
++import { TFunction } from 'i18next';
++import { useTranslation } from 'react-i18next';
++import { LanguageSwitcher } from '../LanguageSwitcher/LanguageSwitcher';
+ 
+ export type NavItem = {
+   title: string;
+@@ -16,25 +19,25 @@ export type NavItem = {
+   disabled?: boolean;
+ };
+ 
+-const HEADER_NAV: NavItem[] = [
++const getHeaderNavigation = (t: TFunction): NavItem[] => [
+   {
+-    title: "Home",
++    title: t("header.home"),
+     url: "/",
+   },
+   {
+-    title: "Artwork",
++    title: t("header.artwork.title"),
+     url: "/artwork",
+     subitems: [
+-      { title: "Paintings", url: "/artwork/paintings" },
+-      { title: "Works on paper", url: "/artwork/works-on-paper" },
++      { title: t("header.artwork.paintings"), url: "/artwork/paintings" },
++      { title: t("header.artwork.worksOnPaper"), url: "/artwork/works-on-paper" },
+     ],
+   },
+   {
+-    title: "About",
++    title: t("header.about.title"),
+     url: "/about",
+     subitems: [
+-      { title: "Bio", url: "/about/bio" },
+-      { title: "Education", url: "/about/education" },
++      { title: t("header.about.bio"), url: "/about/bio" },
++      { title: t("header.about.education"), url: "/about/education" },
+     ],
+   },
+   // {
+@@ -42,11 +45,11 @@ const HEADER_NAV: NavItem[] = [
+   //   url: "/mentoring",
+   // },
+   {
+-    title: "Contact",
++    title: t("header.contact"),
+     url: "/contact",
+     className: "contact-btn",
+     disabled: true
+-  },
++  }
+ ];
+ 
+ export const isMenuItemActive = (item: NavItem, pathname: string) => {
+@@ -55,12 +58,15 @@ export const isMenuItemActive = (item: NavItem, pathname: string) => {
+ };
+ 
+ export const Header: FC = () => {
++  const { t } = useTranslation();
+   const location = useLocation();
+   const navigate = useNavigate();
+   const pathname = location.pathname;
+ 
+   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+ 
++  const HEADER_NAV = getHeaderNavigation(t);
++
+   const handleResize = () => {
+     setIsMobile(window.innerWidth <= 768);
+   };
+@@ -112,9 +118,8 @@ export const Header: FC = () => {
+             )
+           
+           })}
+-          <Button onClick={() => navigate("/contact")} kind='secondary' style={{ 'fontWeight': 'normal' }}>
+-            CONTACT
+-          </Button>
++          <LanguageSwitcher />
++          <Button onClick={() => navigate("/contact")} kind='secondary' style={{ 'fontWeight': 'normal' }}>{t("header.contact")}</Button>
+         </nav>
+       )}
+     </header>
+diff --git a/src/components/LanguageSwitcher/LanguageSwitcher.css b/src/components/LanguageSwitcher/LanguageSwitcher.css
+new file mode 100644
+index 0000000..3f10716
+--- /dev/null
++++ b/src/components/LanguageSwitcher/LanguageSwitcher.css
+@@ -0,0 +1,70 @@
++.custom-dropdown {
++  position: relative;
++  display: inline-block;
++}
++
++.dropdown-toggle {
++  background-color: transparent;
++  border: none;
++  color: white;
++  padding: 5px 10px;
++  cursor: pointer;
++  font-size: 0.85rem;
++  border-radius: 4px;
++  transition: background-color 0.3s, color 0.3s;
++  display: flex;
++  align-items: center;
++  justify-content: space-between;
++}
++
++.dropdown-toggle:hover,
++.dropdown-toggle:focus {
++  color: #9c9999;
++  outline: none;
++}
++
++.dropdown-icon {
++  transition: transform 0.3s ease;
++  margin-left: 5px;
++}
++
++.custom-dropdown:hover .dropdown-icon {
++  transform: rotate(180deg);
++}
++
++.dropdown-menu {
++  position: absolute;
++  top: 100%;
++  left: 0;
++  background-color: #201a16;
++  border-radius: 4px;
++  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
++  list-style: none;
++  padding: 0;
++  margin: 5px 0;
++  z-index: 10;
++  opacity: 0;
++  visibility: hidden;
++  transition: opacity 0.3s, visibility 0.3s;
++}
++
++.custom-dropdown:hover .dropdown-menu,
++.dropdown-menu:hover {
++  opacity: 1;
++  visibility: visible;
++}
++
++.dropdown-item {
++  padding: 8px 16px;
++  cursor: pointer;
++  color: white;
++  transition: background-color 0.3s, color 0.3s;
++}
++
++.dropdown-item:hover {
++  color: #9c9999;
++}
++
++.dropdown-item.selected {
++  font-weight: bold;
++}
+\ No newline at end of file
+diff --git a/src/components/LanguageSwitcher/LanguageSwitcher.tsx b/src/components/LanguageSwitcher/LanguageSwitcher.tsx
+new file mode 100644
+index 0000000..338812c
+--- /dev/null
++++ b/src/components/LanguageSwitcher/LanguageSwitcher.tsx
+@@ -0,0 +1,51 @@
++import React, { useRef } from 'react';
++import './LanguageSwitcher.css';
++import { FaChevronDown } from 'react-icons/fa';
++import { useTranslation } from 'react-i18next';
++
++export const LanguageSwitcher: React.FC = () => {
++  const { i18n } = useTranslation();
++  const ref = useRef<HTMLUListElement | null>(null);
++
++  const languages = [
++    { code: 'en', label: 'EN' },
++    { code: 'ua', label: 'UA' },
++  ];
++
++  const selectedLanguage = languages.find((lang) => lang.code === i18n.language) || languages[0];
++
++  const handleLanguageSelect = (language: { code: string; label: string }) => {
++      if (ref.current) {
++          ref.current.style.visibility = 'hidden';
++      }
++    i18n.changeLanguage(language.code);
++  };
++
++  const removeInlineStyle = () => {
++    if (ref.current) {
++        ref.current.style.visibility = '';
++    }
++  };
++
++  return (
++    <div className="custom-dropdown" onMouseEnter={removeInlineStyle}>
++      <button className="dropdown-toggle">
++        {selectedLanguage.label}
++        <FaChevronDown className="dropdown-icon" />
++      </button>
++      <ul className="dropdown-menu" ref={ref}>
++        {languages.map((lang) => (
++          <li
++            key={lang.code}
++            className={`dropdown-item ${
++              lang.code === selectedLanguage.code ? 'selected' : ''
++            }`}
++            onClick={() => handleLanguageSelect(lang)}
++          >
++            {lang.label}
++          </li>
++        ))}
++      </ul>
++    </div>
++  );
++};
+\ No newline at end of file
+diff --git a/src/components/index.ts b/src/components/index.ts
+index 92802eb..adb3368 100644
+--- a/src/components/index.ts
++++ b/src/components/index.ts
+@@ -12,4 +12,5 @@ export { Title } from './Title/Title';
+ export { Paragraph } from './Paragraph/Paragraph';
+ export { Text } from './Text/Text';
+ export { Image } from './Image/Image';
+-export { Main } from './Main/Main';
+\ No newline at end of file
++export { Main } from './Main/Main';
++export { LanguageSwitcher } from './LanguageSwitcher/LanguageSwitcher';
+\ No newline at end of file
+diff --git a/src/i18n/en.json b/src/i18n/en.json
+new file mode 100644
+index 0000000..96fbb8a
+--- /dev/null
++++ b/src/i18n/en.json
+@@ -0,0 +1,30 @@
++{
++    "header": {
++        "home": "Home",
++        "artwork": {
++            "title": "Artwork",
++            "paintings": "Paintings",
++            "worksOnPaper": "Works on paper"
++        },
++        "about": {
++            "title": "About",
++            "bio": "Bio",
++            "education": "Education"
++        },
++        "contact": "Contact"
++    },
++    "home": {
++        "quote": "Art became my refuge, and later — my voice."
++    },
++    "contact": {
++        "mainText": "Thank you for your interest in my work. Complete the form below and I will respond as soon as possible. Anna",
++        "form": {
++            "name": "First Name",
++            "lastName": "Last Name",
++            "email": "Email Address",
++            "subject": "Subject",
++            "message": "Message",
++            "submit": "Submit"
++        }
++    }
++}
+\ No newline at end of file
+diff --git a/src/i18n/i18n.ts b/src/i18n/i18n.ts
+new file mode 100644
+index 0000000..d51ddad
+--- /dev/null
++++ b/src/i18n/i18n.ts
+@@ -0,0 +1,20 @@
++import i18n from 'i18next';
++import { initReactI18next } from 'react-i18next';
++import en from './en.json';
++import ua from './ua.json';
++
++i18n
++  .use(initReactI18next)
++  .init({
++    fallbackLng: 'ua',
++    lng: 'ua',
++    resources: {
++        en: { translation : en},
++        ua: { translation : ua}
++    },
++    interpolation: {
++      escapeValue: false,
++    }
++  });
++
++export default i18n;
+\ No newline at end of file
+diff --git a/src/i18n/ua.json b/src/i18n/ua.json
+new file mode 100644
+index 0000000..725141e
+--- /dev/null
++++ b/src/i18n/ua.json
+@@ -0,0 +1,30 @@
++{
++    "header": {
++        "home": "Головна",
++        "artwork": {
++            "title": "Роботи",
++            "paintings": "Картини",
++            "worksOnPaper": "Графіка"
++        },
++        "about": {
++            "title": "Про мене",
++            "bio": "Біографія",
++            "education": "Освіта"
++        },
++        "contact": "Звʼязатися"
++    },
++    "home": {
++        "quote": "Мистецтво стало моїм прихистком, а згодом — моїм голосом."
++    },
++    "contact": {
++        "mainText": "Дякую за ваш інтерес до моєї роботи. Заповніть форму нижче, і я відповім якомога швидше. Анна",
++        "form": {
++            "name": "Імʼя",
++            "lastName": "Фамілія",
++            "email": "Емейл",
++            "subject": "Тема",
++            "message": "Повідомлення",
++            "submit": "Надіслати"
++        }
++    }
++}
+\ No newline at end of file
+diff --git a/src/pages/About/About.tsx b/src/pages/About/About.tsx
+index de19361..620be53 100644
+--- a/src/pages/About/About.tsx
++++ b/src/pages/About/About.tsx
+@@ -1,20 +1,23 @@
+ import React, { FC } from 'react';
+ import { useLocation, useNavigate } from 'react-router-dom';
+ import { Image, Tab, Tabs, Text } from '../../components';
++import { useTranslation } from 'react-i18next';
+ 
+ export const AboutPage: FC = () => {
+   const location = useLocation();
+   const navigate = useNavigate();
++  const { t } = useTranslation();
++
+   const activeKey = location.pathname.includes("bio") ? "bio" : "education";
+ 
+   return (
+     <div>
+       <Tabs
+-        title="About"
++        title={t('header.about.title')}
+         activeKey={activeKey}
+         onTabChange={(key) => navigate(`/about/${key}`)}
+       >
+-        <Tab value="bio" label="Bio">
++        <Tab value="bio" label={t('header.about.bio')}>
+           <Image src="https://picsum.photos/800/500?random=10" alt="Description of image" />
+           <Text 
+             title="Artist Biography" 
+@@ -27,7 +30,7 @@ export const AboutPage: FC = () => {
+           />
+         </Tab>
+   
+-        <Tab value="education" label="Education">
++        <Tab value="education" label={t('header.about.education')}>
+           <Text
+             title="Education"
+             paragraphs={[
+diff --git a/src/pages/Artworks/ArtworksPage.tsx b/src/pages/Artworks/ArtworksPage.tsx
+index d4cba0d..aaefa07 100644
+--- a/src/pages/Artworks/ArtworksPage.tsx
++++ b/src/pages/Artworks/ArtworksPage.tsx
+@@ -2,10 +2,12 @@ import React, { FC } from 'react';
+ import './ArtworksPage.css';
+ import { useLocation, useNavigate } from "react-router-dom";
+ import { Tabs, Tab, ArtworkGrid, Paragraph } from "../../components";
++import { useTranslation } from 'react-i18next';
+ 
+ export const ArtworksPage: FC = () => {
+   const location = useLocation();
+   const navigate = useNavigate();
++  const { t } = useTranslation();
+ 
+   const getActiveTabKey = (pathname: string): string => (
+     pathname.includes("works-on-paper") ? "works-on-paper" : "paintings"
+@@ -20,15 +22,15 @@ export const ArtworksPage: FC = () => {
+   return (
+     <div>
+       <Tabs
+-        title="Artworks"
++        title={t('header.artwork.title')}
+         activeKey={activeKey}
+         onTabChange={handleTabChange}
+       >
+-        <Tab value="paintings" label="Paintings">
++        <Tab value="paintings" label={t('header.artwork.paintings')}>
+           <ArtworkGrid />
+         </Tab>
+ 
+-        <Tab value="works-on-paper" label="Works on Paper">
++        <Tab value="works-on-paper" label={t('header.artwork.worksOnPaper')}>
+           <Paragraph>Works on Paper content here...</Paragraph>
+         </Tab>
+       </Tabs>
+diff --git a/src/pages/Contact/ContactPage.tsx b/src/pages/Contact/ContactPage.tsx
+index 3cb1263..3b33036 100644
+--- a/src/pages/Contact/ContactPage.tsx
++++ b/src/pages/Contact/ContactPage.tsx
+@@ -4,6 +4,7 @@ import * as Yup from 'yup';
+ import { Button, Input } from '../../components';
+ import './ContactPage.css';
+ import { IContactFormData, submitContactForm } from '../../api/api';
++import { useTranslation } from 'react-i18next';
+ 
+ const validationSchema = Yup.object({
+   firstName: Yup.string().required('Required field'),
+@@ -14,6 +15,7 @@ const validationSchema = Yup.object({
+ });
+ 
+ export const ContactPage: React.FC = () => {
++  const { t } = useTranslation();
+   const [message, setMessage] = useState<string | null>(null);
+   const [error, setError] = useState<string | null>(null);
+ 
+@@ -58,9 +60,7 @@ export const ContactPage: React.FC = () => {
+ 
+   return (
+     <div className="contact-wrapper">
+-      <p className="contact-description">
+-        Thank you for your interest in my work. Complete the form below and I will respond as soon as possible. Anna
+-      </p>
++      <p className="contact-description">{t('contact.mainText')}</p>
+ 
+       <div className="contact-content">
+         <div className="contact-image">
+@@ -73,21 +73,21 @@ export const ContactPage: React.FC = () => {
+ 
+         <form onSubmit={formik.handleSubmit} className="contact-form">
+           <div className="form-row">
+-            <Input name="firstName" label="First Name" required />
+-            <Input name="lastName" label="Last Name" required />
++            <Input name="firstName" label={t('contact.form.name')} required />
++            <Input name="lastName" label={t('contact.form.lastName')} required />
+           </div>
+           <div className="form-row">
+-            <Input name="email" label="Email Address" type="email" required />
++            <Input name="email" label={t('contact.form.email')} type="email" required />
+           </div>
+           <div className="form-row">
+-            <Input name="subject" label="Subject" required />
++            <Input name="subject" label={t('contact.form.subject')} required />
+           </div>
+-          <Input name="message" label="Message" as="textarea" rows={5} required />
++          <Input name="message" label={t('contact.form.message')} as="textarea" rows={5} required />
+ 
+           {message && <div className="success-message">{message}</div>}
+           {error && <div className="error-message">{error}</div>}
+ 
+-          <Button type="submit" isLoading={formik.isSubmitting}>SUBMIT</Button>
++          <Button type="submit" isLoading={formik.isSubmitting}>{t('contact.form.submit')}</Button>
+         </form>
+         </FormikProvider>
+       </div>
+diff --git a/src/pages/Home/HomePage.tsx b/src/pages/Home/HomePage.tsx
+index b1a0a10..8553e9f 100644
+--- a/src/pages/Home/HomePage.tsx
++++ b/src/pages/Home/HomePage.tsx
+@@ -4,6 +4,7 @@ import {Navigation, Autoplay} from 'swiper/modules';
+ import 'swiper/css';
+ import 'swiper/css/navigation';
+ import './HomePage.css';
++import { useTranslation } from 'react-i18next';
+ 
+ const imageUrls = [
+   'https://picsum.photos/800/500?random=1',
+@@ -23,6 +24,8 @@ const imageUrls = [
+ 
+ 
+ export const HomePage: FC = () => {
++    const { t } = useTranslation();
++
+     const prevRef = useRef<HTMLButtonElement | null>(null);
+     const nextRef = useRef<HTMLButtonElement | null>(null);
+     const [navReady, setNavReady] = useState(false);
+@@ -38,9 +41,7 @@ export const HomePage: FC = () => {
+             <section className="quote">
+                 {/* eslint-disable-next-line */}
+                 <p className="quote-symbol">//</p>
+-                <blockquote className="quote-text">
+-                    Art became my refuge, and later — my voice.
+-                </blockquote>
++                <blockquote className="quote-text">{t('home.quote')}</blockquote>
+                 <cite className="quote-author">— Anna Budzinska</cite>
+             </section>
+             <section className="image-slider-wrapper">
+-- 
+2.39.5 (Apple Git-154)
+

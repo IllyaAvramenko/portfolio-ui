@@ -6,8 +6,8 @@ import ua from './ua.json';
 i18n
   .use(initReactI18next)
   .init({
-    fallbackLng: 'ua',
-    lng: 'ua',
+    fallbackLng: 'en',
+    lng: 'en',
     resources: {
         en: { translation : en},
         ua: { translation : ua}
