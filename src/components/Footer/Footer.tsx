@@ -4,11 +4,9 @@ import { FaInstagram } from 'react-icons/fa';
 
 // const FacebookIcon = FaFacebookF as FC;
 const InstagramIcon = FaInstagram as FC;
-const FB_LINK = process.env.REACT_APP_FB_LINK;
 const INST_LINK = process.env.REACT_APP_INST_LINK;
 
 export const Footer: FC = () => {
-  console.log(FB_LINK, INST_LINK)
   return (
     <footer className="footer">
       {/*<a*/}
