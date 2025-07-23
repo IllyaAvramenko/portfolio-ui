@@ -37,7 +37,7 @@ export const AboutPage: FC = () => {
   
         <Tab value="education" label={t('header.about.education')}>
           <Text
-            title="Education"
+              title={t('about.education.title')}
             paragraphs={[
                 t('about.education.school.title'),
                 t('about.education.school.place'),
