@@ -20,12 +20,17 @@ export const AboutPage: FC = () => {
         <Tab value="bio" label={t('header.about.bio')}>
           <Image src="https://picsum.photos/800/500?random=10" alt="Description of image" />
           <Text 
-            title="Artist Biography" 
+            title={t('about.bio.title')}
             paragraphs={[
-              "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat omnis molestias, obcaecati aperiam esse veniam voluptatibus autem est non beatae blanditiis quae debitis rerum laboriosam, numquam voluptas iure eaque atque, nobis officia. Iste consequuntur, sunt eaque ipsam, quas delectus tenetur pariatur numquam quos nulla provident quisquam explicabo rerum modi suscipit?", 
-              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut quibusdam praesentium fugit voluptas est nemo aliquid laboriosam, enim, ad dolore iste corrupti molestiae recusandae perspiciatis harum pariatur neque quo, corporis accusantium voluptate in rerum natus esse modi. Culpa minus totam ipsum quasi cupiditate porro non reiciendis corporis saepe impedit? Voluptate exercitationem asperiores vitae optio, necessitatibus eveniet cum pariatur aut, excepturi quisquam illo veniam nihil! Mollitia eius architecto quam non odit!",
-              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam maiores tempora rem consequuntur quidem deleniti eaque ab officia distinctio asperiores!",
-              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam maiores tempora rem consequuntur quidem deleniti eaque ab officia distinctio asperiores!",
+                t('about.bio.c1'),
+                t('about.bio.c2'),
+                t('about.bio.c3'),
+                t('about.bio.c4'),
+                t('about.bio.c5'),
+                t('about.bio.c6'),
+                t('about.bio.c7'),
+                t('about.bio.c8'),
+                t('about.bio.c9'),
             ]}
           />
         </Tab>
@@ -34,17 +39,17 @@ export const AboutPage: FC = () => {
           <Text
             title="Education"
             paragraphs={[
-              "School of Representational Art",
-              "Chicago, IL",
-              "1997 - 2001",
-              "",
-              "American Academy of Art",
-              "Chicago, IL",
-              "1996 - 1997",
-              "",
-              "B.A Columbia College",
-              "Columbia, MO",
-              "1975 - 1979"
+                t('about.education.school.title'),
+                t('about.education.school.place'),
+                t('about.education.school.date'),
+                "",
+                t('about.education.mentorship.title'),
+                t('about.education.mentorship.place'),
+                t('about.education.mentorship.date'),
+                "",
+                t('about.education.institute.title'),
+                t('about.education.institute.place'),
+                t('about.education.institute.date')
             ]}
             grouped
           />

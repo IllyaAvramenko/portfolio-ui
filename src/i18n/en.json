@@ -26,5 +26,38 @@
             "message": "Message",
             "submit": "Submit"
         }
+    },
+    "about": {
+        "bio": {
+            "title": "Artist Biography",
+            "c1": "Anna Budzinska was born on October 27, 2004, in Vinnytsia, Ukraine. She grew up in Nemyriv — a picturesque town overlooking a river and a pine forest, where a part of her inner world remains preserved. From an early age, Anna was an active and curious child, always close to nature — helping in the garden and exploring the surrounding world.",
+            "c2": "Her early development of artistic abilities was combined with a love of music. For eight years, she studied at a music school, mastering piano and vocals, participating in solo performances, choirs, and ensembles. At the same time, drawing was always her constant companion — she created works developing a unique imaginative world.",
+            "c3": "After finishing music school, Anna realized she wanted to pursue painting professionally and focus on creativity. She initially attended an art club in her hometown, and later was admitted directly into the fourth grade of the Vinnytsia Art School. She diligently combined studies at a regular school and the art school, traveling daily to a neighboring town and back.",
+            "c4": "Preparing to enter university abroad, Anna trained under the guidance of the Honored Artist of Ukraine Serhiy Bartko, who became her mentor and support. Under his leadership, she spent six months improving her technique and preparing for exams, while simultaneously studying the language and completing other necessary tests.",
+            "c5": "Anna successfully passed the entrance exams to the Academy of Fine Arts and Design in Bratislava (VŠVU), achieving one of the highest scores, and enrolled in the Faculty of Restoration of Works of Art, where she continues to study to this day.",
+            "c6": "Alongside her studies, she continues to paint, developing her own artistic style. Anna mainly works with oil paints, sometimes using graphics and watercolor. In her works, the artist addresses images of nature, humans, and everyday life — often on the edge of reality, occasionally complementing them with mystical and archaic motifs.",
+            "c7": "Her paintings create a space where the viewer can find something personally meaningful.",
+            "c8": "For Anna, painting is a means of self-expression and reflection, as well as an invitation to dialogue with those who encounter her works.",
+            "c9": "To date, Anna Budzinska’s works are held in private collections and have been exhibited in group exhibitions in Ukraine and Slovakia."
+        },
+        "education": {
+            "title": "Education",
+            "institute": {
+                "title": "Academy of Fine Arts and Design in Bratislava, Faculty of Restoration of Artworks",
+                "place": "Bratislava, Slovakia",
+                "date": "2022 – Present"
+            },
+            "mentorship": {
+                "title": "Private Mentorship with Serhii Bartko, Honored Artist of Ukraine",
+                "place": "Vinnytsia, Ukraine",
+                "date": "2021 – 2022"
+            },
+            "school": {
+                "title": "Vinnytsia Art School",
+                "place": "Vinnytsia, Ukraine",
+                "date": "2020 – 2022"
+            }
+        }
+
     }
 }
