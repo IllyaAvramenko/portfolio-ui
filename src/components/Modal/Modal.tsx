@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Modal.css';
-import { useBodyScrollLock } from '../../hooks';
+import { useBodyScrollLock, useFocusTrap } from '../../hooks';
 
 type ModalProps = {
   isOpen: boolean;
@@ -19,6 +19,7 @@ export const Modal: React.FC<ModalProps> = ({
   dimensions,
   medium,
 }) => {
+  const overlayRef = useRef<HTMLDivElement | null>(null);
   const imageRef = useRef<HTMLImageElement | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
   const [imageDimensions, setImageDimensions] = useState({
@@ -58,6 +59,23 @@ export const Modal: React.FC<ModalProps> = ({
   }, [isOpen]);
 
   useBodyScrollLock(isOpen);
+  useFocusTrap(overlayRef, isOpen);
+
+  useEffect(() => {
+    const handleEscapeKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscapeKey);
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscapeKey);
+    };
+  }, [isOpen, onClose]);
 
   const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (!(event.target as HTMLElement).classList.contains('modal-image')) {
@@ -68,8 +86,15 @@ export const Modal: React.FC<ModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay" onClick={handleOverlayClick}>
-      <button className="modal-close" onClick={onClose}>
+    <div
+      className="modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label={title}
+      ref={overlayRef}
+      onClick={handleOverlayClick}
+    >
+      <button className="modal-close" aria-label="Close" onClick={onClose}>
         &times;
       </button>
       <div className="modal-content" ref={contentRef}>

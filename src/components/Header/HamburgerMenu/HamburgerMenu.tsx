@@ -36,12 +36,18 @@ export const HamburgerMenu: FC<HamburgerMenuProps> = ({ navItems }) => {
 
   return (
     <>
-      <button className={cn('hamburger-icon', { hide: isOpen })} onClick={toggleMenu}>
+      <button
+        className={cn('hamburger-icon', { hide: isOpen })}
+        onClick={toggleMenu}
+        aria-label={isOpen ? t('menu.close') : t('menu.open')}
+        aria-expanded={isOpen}
+        aria-controls="hamburger-nav"
+      >
         ☰
       </button>
       <div className={cn('hamburger-overlay', { show: isOpen })} onClick={toggleMenu}></div>
       <div className={cn('hamburger-menu', { open: isOpen })}>
-        <nav className="hamburger-nav">
+        <nav className="hamburger-nav" id="hamburger-nav">
           {navItems.map((item) => {
             if (item.disabled) return <React.Fragment key={item.url}></React.Fragment>;
             return (

@@ -34,6 +34,9 @@
   cursor: pointer;
   padding: 0.2rem 0;
   transition: color var(--transition-fast);
+  background: none;
+  border: none;
+  font-family: inherit;
 }
 
 .tab-label:hover {
@@ -88,6 +91,9 @@
   font-weight: 300;
   color: var(--color-text);
   cursor: pointer;
+  background: none;
+  border: none;
+  width: 100%;
 }
 
 .accordion-content {
@@ -104,7 +110,9 @@
   cursor: pointer;
   padding: 0.4rem 0;
   transition: color var(--transition-fast);
-  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
 }
 
 .accordion-tab-label:hover {

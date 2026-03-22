@@ -9,21 +9,25 @@ interface IProps {
   type?: string;
   as?: 'input' | 'textarea';
   rows?: number;
-  required?: boolean; 
+  required?: boolean;
 }
 
 export const Input: React.FC<IProps> = ({ label, as = 'input', rows = 4, required, ...props }) => {
   const [field, meta] = useField(props.name);
 
   return (
-    <div className={classNames("form-input", {
-      'form-input__error': meta.touched && meta.error
-    })}>
-      <label className={classNames({ 'required': required })} htmlFor={props.name}>{label}</label>
+    <div
+      className={classNames('form-input', {
+        'form-input__error': meta.touched && meta.error,
+      })}
+    >
+      <label className={classNames({ required: required })} htmlFor={props.name}>
+        {label}
+      </label>
       {as === 'textarea' ? (
-        <textarea {...field} rows={rows} />
+        <textarea {...field} id={props.name} rows={rows} />
       ) : (
-        <input {...field} type={props.type || 'text'} />
+        <input {...field} id={props.name} type={props.type || 'text'} />
       )}
       {meta.touched && meta.error ? <div className="error">{meta.error}</div> : null}
     </div>

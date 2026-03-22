@@ -17,18 +17,29 @@ export const LanguageSwitcher: React.FC = () => {
   const handleLanguageSelect = (language: { code: string; label: string }) => {
     setIsHidden(true);
     i18n.changeLanguage(language.code);
+    document.documentElement.lang = language.code;
   };
 
   return (
-    <div className="custom-dropdown" onMouseEnter={() => setIsHidden(false)}>
-      <button className="dropdown-toggle">
+    <div
+      className="custom-dropdown"
+      onMouseEnter={() => setIsHidden(false)}
+      aria-label="Select language"
+    >
+      <button className="dropdown-toggle" aria-haspopup="listbox" aria-expanded={!isHidden}>
         {selectedLanguage.label}
         <FaChevronDown className="dropdown-icon" />
       </button>
-      <ul className="dropdown-menu" style={isHidden ? { visibility: 'hidden' } : undefined}>
+      <ul
+        className="dropdown-menu"
+        role="listbox"
+        style={isHidden ? { visibility: 'hidden' } : undefined}
+      >
         {languages.map((lang) => (
           <li
             key={lang.code}
+            role="option"
+            aria-selected={lang.code === selectedLanguage.code}
             className={`dropdown-item ${lang.code === selectedLanguage.code ? 'selected' : ''}`}
             onClick={() => handleLanguageSelect(lang)}
           >

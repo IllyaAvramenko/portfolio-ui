@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 import './ArtworkItem.css';
-import { Title } from "../Title/Title";
-import { Paragraph } from "../Paragraph/Paragraph";
+import { Title } from '../Title/Title';
+import { Paragraph } from '../Paragraph/Paragraph';
 
 type ArtworkItemProps = {
   artwork: {
@@ -13,14 +13,29 @@ type ArtworkItemProps = {
   onClick: () => void;
 };
 
-export const ArtworkItem: React.FC<ArtworkItemProps> = ({ artwork, onClick }) => (
-  <div className="artwork-item" onClick={onClick}>
-    <img src={artwork.imageSrc} alt={artwork.title} />
-    <div className="artwork-info">
-      <Title level={3} size="medium" weight="bold">
-        {artwork.title}
-      </Title>
-      <Paragraph>{`${artwork.dimensions} ${artwork.medium}`}</Paragraph>
+export const ArtworkItem: React.FC<ArtworkItemProps> = ({ artwork, onClick }) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      onClick();
+    }
+  };
+
+  return (
+    <div
+      className="artwork-item"
+      role="button"
+      tabIndex={0}
+      onClick={onClick}
+      onKeyDown={handleKeyDown}
+    >
+      <img src={artwork.imageSrc} alt={artwork.title} />
+      <div className="artwork-info">
+        <Title level={3} size="medium" weight="bold">
+          {artwork.title}
+        </Title>
+        <Paragraph>{`${artwork.dimensions} ${artwork.medium}`}</Paragraph>
+      </div>
     </div>
-  </div>
-);
+  );
+};

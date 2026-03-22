@@ -44,16 +44,16 @@ export const Tabs: React.FC<ITabsProps> = ({
     <div className={cn('tabs', className, { 'accordion-mode': isAccordion })}>
       {isAccordion ? (
         <div className="accordion-tabs">
-          <div className="accordion-toggle" onClick={toggleAccordion}>
+          <button className="accordion-toggle" onClick={toggleAccordion} aria-expanded={isOpen}>
             <Title level={2} size="large" weight="normal">
               {isOpen ? '−' : '+'}
             </Title>
-          </div>
+          </button>
 
           {isOpen && (
             <div className="accordion-content">
               {tabs.map((tab) => (
-                <div
+                <button
                   key={tab.props.value}
                   onClick={() => {
                     if (!tab.props.disabled) {
@@ -73,7 +73,7 @@ export const Tabs: React.FC<ITabsProps> = ({
                   >
                     {tab.props.label}
                   </Title>
-                </div>
+                </button>
               ))}
             </div>
           )}
@@ -82,10 +82,14 @@ export const Tabs: React.FC<ITabsProps> = ({
         <div className="tabs-content">
           {title && <div className="tabs-title">{title}</div>}
 
-          <div className="tabs-nav__list">
+          <div className="tabs-nav__list" role="tablist">
             {tabs.map((tab) => (
-              <div
+              <button
                 key={tab.props.value}
+                role="tab"
+                aria-selected={activeKey === tab.props.value}
+                aria-controls={'tabpanel-' + tab.props.value}
+                id={'tab-' + tab.props.value}
                 onClick={() => !tab.props.disabled && onTabChange(tab.props.value)}
                 className={cn('tab-label', {
                   active: activeKey === tab.props.value,
@@ -93,13 +97,18 @@ export const Tabs: React.FC<ITabsProps> = ({
                 })}
               >
                 {tab.props.label}
-              </div>
+              </button>
             ))}
           </div>
         </div>
       )}
 
-      <div className="tab-content">
+      <div
+        className="tab-content"
+        role="tabpanel"
+        id={'tabpanel-' + activeKey}
+        aria-labelledby={'tab-' + activeKey}
+      >
         {activeTab?.props.children ?? <div>{t('error.tabNotFound')}</div>}
       </div>
     </div>

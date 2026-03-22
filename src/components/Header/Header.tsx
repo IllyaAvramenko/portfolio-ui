@@ -65,9 +65,9 @@ export const Header: FC = () => {
 
   return (
     <header>
-      <div className="logo" onClick={() => navigate('/')}>
+      <Link to="/" className="logo">
         {'Anna Budzinska'.toUpperCase()}
-      </div>
+      </Link>
       {isMobile ? (
         <HamburgerMenu navItems={HEADER_NAV} />
       ) : (
