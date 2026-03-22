@@ -70,7 +70,7 @@ export const ContactPage: React.FC = () => {
       <div className="contact-content">
         <div className="contact-image">
           <div className="image-frame">
-            <img src="https://picsum.photos/800/500?random=1" alt="Painting" />
+            <img src="https://picsum.photos/800/500?random=1" alt="Painting" loading="lazy" />
           </div>
         </div>
 

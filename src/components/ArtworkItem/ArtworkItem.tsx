@@ -29,7 +29,7 @@ export const ArtworkItem: React.FC<ArtworkItemProps> = ({ artwork, onClick }) =>
       onClick={onClick}
       onKeyDown={handleKeyDown}
     >
-      <img src={artwork.imageSrc} alt={artwork.title} />
+      <img src={artwork.imageSrc} alt={artwork.title} loading="lazy" />
       <div className="artwork-info">
         <Title level={3} size="medium" weight="bold">
           {artwork.title}

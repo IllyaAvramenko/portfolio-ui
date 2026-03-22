@@ -9,7 +9,7 @@ export const LanguageSwitcher: React.FC = () => {
 
   const languages = [
     { code: 'en', label: 'EN' },
-    { code: 'ua', label: 'UA' },
+    { code: 'uk', label: 'UA' },
   ];
 
   const selectedLanguage = languages.find((lang) => lang.code === i18n.language) || languages[0];
