@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import './Footer.css';
 import { FaInstagram } from 'react-icons/fa';
 
 // const FacebookIcon = FaFacebookF as FC;
 const InstagramIcon = FaInstagram as FC;
-const INST_LINK = process.env.REACT_APP_INST_LINK;
+const INST_LINK = import.meta.env.VITE_INST_LINK;
 
 export const Footer: FC = () => {
   return (

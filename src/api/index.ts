@@ -1,1 +1,1 @@
-export { submitContactForm } from './api.ts';
+export { submitContactForm } from './api';

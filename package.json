@@ -3,17 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.126",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
     "axios": "^1.10.0",
     "classnames": "^2.5.1",
-    "core-js": "^3.44.0",
     "formik": "^2.4.6",
     "i18next": "^25.3.2",
     "react": "^19.1.0",
@@ -21,34 +12,26 @@
     "react-i18next": "^15.6.1",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.6.3",
-    "react-scripts": "5.0.1",
     "swiper": "^11.2.10",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4",
-    "whatwg-fetch": "^3.6.20",
     "yup": "^1.6.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext .ts,.tsx",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css}\"",
+    "prepare": "husky"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": ["eslint --fix", "prettier --write"],
+    "src/**/*.css": ["prettier --write"]
   },
   "browserslist": {
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all",
-      "ie 11",
-      "Android >= 5",
-      "Chrome >= 49",
-      "Safari >= 10"
+      "not op_mini all"
     ],
     "development": [
       "last 1 chrome version",
@@ -57,6 +40,25 @@
     ]
   },
   "devDependencies": {
-    "@types/react-icons": "^3.0.0"
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^10.0.0",
+    "eslint-plugin-react": "^7.37.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "husky": "^9.1.0",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.4.0",
+    "typescript": "^5.5.0",
+    "vite": "^6.3.0"
   }
 }
