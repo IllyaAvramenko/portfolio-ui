@@ -1,5 +1,5 @@
 .footer {
-  background-color: #201a16;
+  background-color: var(--color-primary);
   padding: 40px 0;
   display: flex;
   justify-content: center;
@@ -7,13 +7,15 @@
 }
 
 .footer__icon {
-  color: white;
+  color: var(--color-white);
   font-size: 24px;
-  transition: transform 0.3s, color 0.3s;
+  transition:
+    transform var(--transition-base),
+    color var(--transition-base);
   cursor: pointer;
 }
 
 .footer__icon:hover {
-  color: #ccc;
+  color: var(--color-border);
   transform: scale(1.1);
 }

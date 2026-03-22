@@ -1,11 +1,11 @@
 header {
-    background-color: #201a16;
-    color: white;
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .logo {
@@ -16,36 +16,37 @@ header {
 }
 
 .main-nav {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
 }
 
 .nav__item {
-    color: white;
-    text-decoration: none;
-    font-size: 0.85rem;
-    letter-spacing: 1px;
-    transition: 0.3s;
+  color: var(--color-white);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  transition: var(--transition-base);
 }
 
-.nav__item:hover, .nav__item.active {
-  color: #9c9999;
+.nav__item:hover,
+.nav__item.active {
+  color: var(--color-hover);
 }
 
 .nav__item-wrapper .contact-btn {
   padding: 12px 22px;
-  border: 2px solid white;
+  border: 2px solid var(--color-white);
   text-decoration: none;
-  color: white;
+  color: var(--color-white);
   font-size: 0.85rem;
   letter-spacing: 1px;
 }
 
 .contact-btn:hover {
-  color: #201a16;
-  background-color: white;
+  color: var(--color-primary);
+  background-color: var(--color-white);
 }
 
 .nav__item-wrapper {
@@ -57,16 +58,18 @@ header {
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #201a16;
+  background-color: var(--color-primary);
   padding: 10px 0;
   min-width: 180px;
   z-index: 10;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow-lg);
 
   opacity: 0;
   transform: translateY(-10px);
   pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity var(--transition-base),
+    transform var(--transition-base);
 }
 
 .nav__item-wrapper:hover .dropdown {
@@ -79,18 +82,19 @@ header {
 .dropdown__item {
   display: block;
   padding: 8px 16px;
-  color: white;
+  color: var(--color-white);
   text-decoration: none;
   font-size: 0.85rem;
   white-space: nowrap;
-  transition: 0.3s;
+  transition: var(--transition-base);
 }
 
-.dropdown__item:hover, .dropdown__item.active {
-  color: #9c9999;
+.dropdown__item:hover,
+.dropdown__item.active {
+  color: var(--color-hover);
 }
 
-@media (max-width: 880px) {
+@media (max-width: 768px) {
   .logo {
     font-size: 1.2rem;
   }

@@ -8,17 +8,6 @@
   flex: 1 0 100%;
 }
 
-.artwork-item {
-  flex: 1 0 calc(50% - 2rem);
-  box-sizing: border-box;
-}
-
-.artwork-item img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
 .artwork-info {
   padding-top: 1rem;
   text-align: left;
@@ -31,7 +20,7 @@
 
 .artwork-info p {
   font-size: 0.875rem;
-  color: #555;
+  color: var(--color-text-muted);
 }
 
 .button-toggle {
@@ -39,7 +28,7 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: transform var(--transition-fast);
   display: flex;
   justify-content: center;
   align-items: center;

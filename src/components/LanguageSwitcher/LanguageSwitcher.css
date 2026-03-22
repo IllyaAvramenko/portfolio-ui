@@ -7,12 +7,14 @@
 .dropdown-toggle {
   background-color: transparent;
   border: none;
-  color: white;
+  color: var(--color-white);
   padding: 5px 10px;
   cursor: pointer;
   font-size: 0.85rem;
   border-radius: 2px;
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color var(--transition-base),
+    color var(--transition-base);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -20,12 +22,12 @@
 
 .dropdown-toggle:hover,
 .dropdown-toggle:focus {
-  color: #9c9999;
+  color: var(--color-hover);
   outline: none;
 }
 
 .dropdown-icon {
-  transition: transform 0.3s ease;
+  transition: transform var(--transition-base);
   margin-left: 5px;
 }
 
@@ -37,7 +39,7 @@
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #201a16;
+  background-color: var(--color-primary);
   border-radius: 2px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   list-style: none;
@@ -46,7 +48,9 @@
   z-index: 10;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s, visibility 0.3s;
+  transition:
+    opacity var(--transition-base),
+    visibility var(--transition-base);
 }
 
 .custom-dropdown:hover .dropdown-menu,
@@ -59,11 +63,13 @@
   font-weight: normal;
   padding: 8px 16px;
   cursor: pointer;
-  color: white;
-  transition: background-color 0.3s, color 0.3s;
+  color: var(--color-white);
+  transition:
+    background-color var(--transition-base),
+    color var(--transition-base);
 }
 
 .dropdown-item:hover,
-.dropdown-item.selected{
-  color: #9c9999;
+.dropdown-item.selected {
+  color: var(--color-hover);
 }

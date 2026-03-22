@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: var(--overlay-dark);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,10 +39,12 @@
 .modal-info {
   position: absolute;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #fff;
+  background-color: var(--overlay-medium);
+  color: var(--color-white);
   padding: 1rem;
-  transition: transform 0.3s ease, bottom 0.3s ease;
+  transition:
+    transform var(--transition-base),
+    bottom var(--transition-base);
   pointer-events: none;
   transform: translateY(100%);
 }
@@ -59,6 +61,6 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: #fff;
+  color: var(--color-white);
   z-index: 1000;
 }

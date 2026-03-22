@@ -1,10 +1,9 @@
 /* Загальні стилі, які залишаються */
 .home {
-  background-color: white;
+  background-color: var(--color-white);
   text-align: center;
   padding: 4rem 1rem;
   color: #222;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .quote {
@@ -14,7 +13,7 @@
 .quote-symbol {
   font-size: 1.25rem;
   margin-bottom: 1rem;
-  color: #999;
+  color: var(--color-text-light);
 }
 
 .quote-text {
@@ -22,14 +21,14 @@
   margin: 0 auto;
   font-size: 20px;
   line-height: 1.6;
-  color: #444;
+  color: var(--color-text-secondary);
 }
 
 .quote-author {
   display: block;
   margin-top: 20px;
   font-size: 0.875rem;
-  color: #999;
+  color: var(--color-text-light);
 }
 
 .image-slider-wrapper {
@@ -56,9 +55,9 @@
   border: none;
   padding: 10px 15px;
   font-size: 2rem;
-  color: #333;
+  color: var(--color-text);
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color var(--transition-base);
   border-radius: 50%;
   user-select: none;
 }

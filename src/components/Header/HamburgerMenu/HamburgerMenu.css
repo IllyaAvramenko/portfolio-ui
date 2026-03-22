@@ -2,12 +2,14 @@
   font-size: 2rem;
   background: none;
   border: none;
-  color: white;
+  color: var(--color-white);
   cursor: pointer;
   top: 20px;
   right: 20px;
   z-index: 101;
-  transition: opacity 0.3s, visibility 0.3s;
+  transition:
+    opacity var(--transition-base),
+    visibility var(--transition-base);
 }
 
 .hamburger-icon.hide {
@@ -21,10 +23,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--overlay-medium);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition:
+    opacity var(--transition-base),
+    visibility var(--transition-base);
 }
 
 .hamburger-overlay.show {
@@ -39,12 +43,12 @@
   right: -300px;
   width: 300px;
   height: 100%;
-  background-color: #201a16;
-  color: white;
+  background-color: var(--color-primary);
+  color: var(--color-white);
   padding: 2rem;
-  transition: right 0.3s ease;
+  transition: right var(--transition-base);
   z-index: 100;
-  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: -4px 0 10px var(--overlay-medium);
   display: flex;
   flex-direction: column;
 }
@@ -60,11 +64,11 @@
 }
 
 .hamburger-item {
-  color: white;
+  color: var(--color-white);
   text-decoration: none;
   font-size: 1rem;
   letter-spacing: 1px;
-  transition: color 0.3s;
+  transition: color var(--transition-base);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -77,28 +81,24 @@
 
 .hamburger-item:hover,
 .hamburger-item.active,
-
 .hamburger-subitem:hover,
 .hamburger-subitem.active {
-  color: #9c9999;
+  color: var(--color-hover);
 }
-
 
 .hamburger-subitems {
   display: flex;
   flex-direction: column;
-  margin-left: 15px;
-  margin-top: 10px;
   margin: 10px 0 10px 15px;
   gap: 10px;
 }
 
 .hamburger-subitem {
-  color: white;
+  color: var(--color-white);
   text-decoration: none;
   font-size: 0.85rem;
   letter-spacing: 1px;
-  transition: color 0.3s;
+  transition: color var(--transition-base);
   cursor: pointer;
 }
 
@@ -107,7 +107,7 @@
   justify-content: center;
   width: 10px;
   margin-right: 5px;
-  transition: transform 0.3s;
+  transition: transform var(--transition-base);
 }
 
 .contact-button {
@@ -116,6 +116,6 @@
 }
 
 .contact-button:hover {
-  background-color: white;
-  color: #241a16;
+  background-color: var(--color-white);
+  color: var(--color-primary-darker);
 }

@@ -8,11 +8,13 @@
 }
 
 .card-back {
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition:
+    transform var(--transition-base),
+    opacity var(--transition-base);
 }
 
 .card-front {
-  transition: transform 0.3s ease;
+  transition: transform var(--transition-base);
 }
 
 .hidden {

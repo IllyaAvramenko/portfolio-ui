@@ -1,17 +1,63 @@
+:root {
+  /* Brand */
+  --color-primary: #201a16;
+  --color-primary-dark: #1a1613;
+  --color-primary-darker: #241a16;
+
+  /* Text */
+  --color-text: #1a1a1a;
+  --color-text-secondary: #444;
+  --color-text-muted: #555;
+  --color-text-light: #999;
+  --color-text-disabled: #a9a9a9;
+
+  /* UI */
+  --color-white: #fff;
+  --color-border: #ccc;
+  --color-hover: #9c9999;
+  --color-bg-light: #f0f0f0;
+  --color-bg-hover: #e0e0e0;
+  --color-disabled-bg: #3e3e3e;
+
+  /* Status */
+  --color-success: #28a745;
+  --color-error: #dc3545;
+  --color-error-accent: crimson;
+
+  /* Overlay */
+  --overlay-dark: rgba(0, 0, 0, 0.8);
+  --overlay-medium: rgba(0, 0, 0, 0.5);
+
+  /* Typography */
+  --font-primary: 'Montserrat', sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.85rem;
+  --font-size-base: 1rem;
+  --font-size-md: 1.2rem;
+  --font-size-lg: 1.5rem;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.3);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+}
+
 body {
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
-  
+  font-family: var(--font-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-* { 
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -19,15 +65,8 @@ code {
 }
 
 @media (pointer: coarse) {
-  :focus, :active {
-    outline:  none;
+  :focus,
+  :active {
+    outline: none;
   }
-}
-
-:root {
-  --breakpoint-xs: 576px;
-  --breakpoint-sm: 768px;
-  --breakpoint-md: 992px;
-  --breakpoint-lg: 1200px;
-  --breakpoint-xl: 1400px;
 }

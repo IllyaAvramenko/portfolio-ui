@@ -29,5 +29,5 @@
   font-weight: 300;
   display: block;
   font-size: 16px;
-  color: #1f1f1f;
+  color: var(--color-text);
 }

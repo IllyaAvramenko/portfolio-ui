@@ -23,7 +23,7 @@
 }
 
 /* Media query for small screens */
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   .title {
     margin-bottom: 0.75rem; /* Adjust margin for small screens */
   }
