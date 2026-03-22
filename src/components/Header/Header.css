@@ -94,7 +94,7 @@ header {
   color: var(--color-hover);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 880px) {
   .logo {
     font-size: 1.2rem;
   }

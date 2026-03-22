@@ -30,7 +30,7 @@ export const HomePage: FC = () => {
   }, []);
 
   return (
-    <div className="home">
+    <>
       <section className="quote">
         <p className="quote-symbol">{'//'}</p>
         <blockquote className="quote-text">{t('home.quote')}</blockquote>
@@ -78,6 +78,6 @@ export const HomePage: FC = () => {
           &#8250;
         </button>
       </section>
-    </div>
+    </>
   );
 };

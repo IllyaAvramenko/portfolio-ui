@@ -60,7 +60,7 @@ export const Header: FC = () => {
   const navigate = useNavigate();
   const pathname = location.pathname;
 
-  const isMobile = useIsMobile();
+  const isMobile = useIsMobile(880);
   const HEADER_NAV = getHeaderNavigation(t);
 
   return (
