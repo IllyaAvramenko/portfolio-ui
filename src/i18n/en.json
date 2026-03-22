@@ -14,7 +14,8 @@
         "contact": "Contact"
     },
     "home": {
-        "quote": "Art became my refuge, and later — my voice."
+        "quote": "Art became my refuge, and later — my voice.",
+        "slideAlt": "Artwork slide"
     },
     "contact": {
         "mainText": "Thank you for your interest in my work. Complete the form below and I will respond as soon as possible. Anna",
@@ -24,8 +25,21 @@
             "email": "Email Address",
             "subject": "Subject",
             "message": "Message",
-            "submit": "Submit"
+            "submit": "Submit",
+            "success": "Thank you! Your message has been successfully submitted.",
+            "error": "Oops! Something went wrong. Please try again later.",
+            "validation": {
+                "required": "Required field",
+                "email": "Invalid email"
+            }
         }
+    },
+    "error": {
+        "tabNotFound": "Tab not found"
+    },
+    "menu": {
+        "open": "Open Menu",
+        "close": "Close Menu"
     },
     "about": {
         "bio": {

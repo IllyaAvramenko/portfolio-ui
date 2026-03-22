@@ -1,13 +1,11 @@
-import React, {FC, useRef} from 'react';
+import React, { useState } from 'react';
 import './LanguageSwitcher.css';
-import {FaChevronDown} from 'react-icons/fa';
+import { FaChevronDown } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
-
-const ArrowIcon = FaChevronDown as FC<any>;
 
 export const LanguageSwitcher: React.FC = () => {
   const { i18n } = useTranslation();
-  const ref = useRef<HTMLUListElement | null>(null);
+  const [isHidden, setIsHidden] = useState(false);
 
   const languages = [
     { code: 'en', label: 'EN' },
@@ -17,31 +15,21 @@ export const LanguageSwitcher: React.FC = () => {
   const selectedLanguage = languages.find((lang) => lang.code === i18n.language) || languages[0];
 
   const handleLanguageSelect = (language: { code: string; label: string }) => {
-      if (ref.current) {
-          ref.current.style.visibility = 'hidden';
-      }
+    setIsHidden(true);
     i18n.changeLanguage(language.code);
   };
 
-  const removeInlineStyle = () => {
-    if (ref.current) {
-        ref.current.style.visibility = '';
-    }
-  };
-
   return (
-    <div className="custom-dropdown" onMouseEnter={removeInlineStyle}>
+    <div className="custom-dropdown" onMouseEnter={() => setIsHidden(false)}>
       <button className="dropdown-toggle">
         {selectedLanguage.label}
-        <ArrowIcon className="dropdown-icon" />
+        <FaChevronDown className="dropdown-icon" />
       </button>
-      <ul className="dropdown-menu" ref={ref}>
+      <ul className="dropdown-menu" style={isHidden ? { visibility: 'hidden' } : undefined}>
         {languages.map((lang) => (
           <li
             key={lang.code}
-            className={`dropdown-item ${
-              lang.code === selectedLanguage.code ? 'selected' : ''
-            }`}
+            className={`dropdown-item ${lang.code === selectedLanguage.code ? 'selected' : ''}`}
             onClick={() => handleLanguageSelect(lang)}
           >
             {lang.label}

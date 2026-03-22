@@ -5,28 +5,35 @@ import { Button, Input } from '../../components';
 import './ContactPage.css';
 import { IContactFormData, submitContactForm } from '../../api/api';
 import { useTranslation } from 'react-i18next';
+import { TFunction } from 'i18next';
 
-const validationSchema = Yup.object({
-  firstName: Yup.string().required('Required field'),
-  lastName: Yup.string().required('Required field'),
-  email: Yup.string().email('Invalid email').required('Required field'),
-  subject: Yup.string().required('Required field'),
-  message: Yup.string().required('Required field'),
-});
+const getValidationSchema = (t: TFunction) =>
+  Yup.object({
+    firstName: Yup.string().required(t('contact.form.validation.required')),
+    lastName: Yup.string().required(t('contact.form.validation.required')),
+    email: Yup.string()
+      .email(t('contact.form.validation.email'))
+      .required(t('contact.form.validation.required')),
+    subject: Yup.string().required(t('contact.form.validation.required')),
+    message: Yup.string().required(t('contact.form.validation.required')),
+  });
 
 export const ContactPage: React.FC = () => {
   const { t } = useTranslation();
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const onSubmit = async (values: IContactFormData, { resetForm }: FormikHelpers<IContactFormData>) => {
+  const onSubmit = async (
+    values: IContactFormData,
+    { resetForm }: FormikHelpers<IContactFormData>,
+  ) => {
     try {
       await submitContactForm(values);
-      setMessage("Thank you! Your message has been successfully submitted.");
+      setMessage(t('contact.form.success'));
       setError(null);
       resetForm();
-    } catch (e) {
-      setError("Oops! Something went wrong. Please try again later.");
+    } catch {
+      setError(t('contact.form.error'));
       setMessage(null);
     }
   };
@@ -36,13 +43,11 @@ export const ContactPage: React.FC = () => {
       const timeout = setTimeout(() => {
         setMessage(null);
         setError(null);
-      }, 10000); // 10 seconds
+      }, 10000);
 
-      // Cleanup function
       return () => clearTimeout(timeout);
     }
   }, [message, error]);
-
 
   const formik = useFormik({
     initialValues: {
@@ -52,7 +57,7 @@ export const ContactPage: React.FC = () => {
       subject: '',
       message: '',
     },
-    validationSchema,
+    validationSchema: getValidationSchema(t),
     onSubmit: onSubmit,
     validateOnBlur: false,
     validateOnChange: true,
@@ -70,25 +75,32 @@ export const ContactPage: React.FC = () => {
         </div>
 
         <FormikProvider value={formik}>
+          <form onSubmit={formik.handleSubmit} className="contact-form">
+            <div className="form-row">
+              <Input name="firstName" label={t('contact.form.name')} required />
+              <Input name="lastName" label={t('contact.form.lastName')} required />
+            </div>
+            <div className="form-row">
+              <Input name="email" label={t('contact.form.email')} type="email" required />
+            </div>
+            <div className="form-row">
+              <Input name="subject" label={t('contact.form.subject')} required />
+            </div>
+            <Input
+              name="message"
+              label={t('contact.form.message')}
+              as="textarea"
+              rows={5}
+              required
+            />
 
-        <form onSubmit={formik.handleSubmit} className="contact-form">
-          <div className="form-row">
-            <Input name="firstName" label={t('contact.form.name')} required />
-            <Input name="lastName" label={t('contact.form.lastName')} required />
-          </div>
-          <div className="form-row">
-            <Input name="email" label={t('contact.form.email')} type="email" required />
-          </div>
-          <div className="form-row">
-            <Input name="subject" label={t('contact.form.subject')} required />
-          </div>
-          <Input name="message" label={t('contact.form.message')} as="textarea" rows={5} required />
+            {message && <div className="success-message">{message}</div>}
+            {error && <div className="error-message">{error}</div>}
 
-          {message && <div className="success-message">{message}</div>}
-          {error && <div className="error-message">{error}</div>}
-
-          <Button type="submit" isLoading={formik.isSubmitting}>{t('contact.form.submit')}</Button>
-        </form>
+            <Button type="submit" isLoading={formik.isSubmitting}>
+              {t('contact.form.submit')}
+            </Button>
+          </form>
         </FormikProvider>
       </div>
     </div>

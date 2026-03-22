@@ -6,6 +6,7 @@ import { Button } from '../../Button/Button';
 import { isMenuItemActive, NavItem } from '../Header';
 import { useTranslation } from 'react-i18next';
 import { LanguageSwitcher } from '../../LanguageSwitcher/LanguageSwitcher';
+import { useBodyScrollLock } from '../../../hooks';
 
 type HamburgerMenuProps = {
   navItems: NavItem[];
@@ -18,10 +19,10 @@ export const HamburgerMenu: FC<HamburgerMenuProps> = ({ navItems }) => {
   const pathname = location.pathname;
   const [isOpen, setIsOpen] = useState(false);
   const [openSubitems, setOpenSubitems] = useState<string | null>(null);
+  useBodyScrollLock(isOpen);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-    document.body.style.overflow = isOpen ? 'auto' : 'hidden';
   };
 
   const toggleSubitems = (url: string) => {
@@ -41,30 +42,37 @@ export const HamburgerMenu: FC<HamburgerMenuProps> = ({ navItems }) => {
       <div className={cn('hamburger-overlay', { show: isOpen })} onClick={toggleMenu}></div>
       <div className={cn('hamburger-menu', { open: isOpen })}>
         <nav className="hamburger-nav">
-          {navItems.map((item, i) => {
-            if (item.disabled) return <React.Fragment key={i}></React.Fragment>
+          {navItems.map((item) => {
+            if (item.disabled) return <React.Fragment key={item.url}></React.Fragment>;
             return (
               <div key={item.url}>
                 <div
-                  className={cn('hamburger-item', { 
-                    'has-subitems': item.subitems, open: openSubitems === item.url,
-                    'active': isMenuItemActive(item, pathname)
+                  className={cn('hamburger-item', {
+                    'has-subitems': item.subitems,
+                    open: openSubitems === item.url,
+                    active: isMenuItemActive(item, pathname),
                   })}
-                  onClick={() => item.subitems ? toggleSubitems(item.url) : handleNavigate(item.url)}
+                  onClick={() =>
+                    item.subitems ? toggleSubitems(item.url) : handleNavigate(item.url)
+                  }
                 >
-                  {item.subitems && <span className="plus-icon">{openSubitems === item.url ? '-' : '+'}</span>}
+                  {item.subitems && (
+                    <span className="plus-icon">{openSubitems === item.url ? '-' : '+'}</span>
+                  )}
                   <span>{item.title.toUpperCase()}</span>
                 </div>
                 {item.subitems && openSubitems === item.url && (
-                  <div className={cn("hamburger-subitems", {
-                    'active': isMenuItemActive(item, pathname)
-                  })}>
+                  <div
+                    className={cn('hamburger-subitems', {
+                      active: isMenuItemActive(item, pathname),
+                    })}
+                  >
                     {item.subitems.map((subitem) => (
                       <Link
                         key={subitem.url}
                         to={subitem.url}
-                        className={cn("hamburger-subitem", {
-                          'active': pathname === subitem.url
+                        className={cn('hamburger-subitem', {
+                          active: pathname === subitem.url,
                         })}
                         onClick={() => handleNavigate(subitem.url)}
                       >
@@ -74,10 +82,16 @@ export const HamburgerMenu: FC<HamburgerMenuProps> = ({ navItems }) => {
                   </div>
                 )}
               </div>
-            )
+            );
           })}
           <LanguageSwitcher />
-          <Button onClick={() => handleNavigate("/contact")} kind='secondary' className='contact-button'>{t("header.contact")}</Button>
+          <Button
+            onClick={() => handleNavigate('/contact')}
+            kind="secondary"
+            className="contact-button"
+          >
+            {t('header.contact')}
+          </Button>
         </nav>
       </div>
     </>

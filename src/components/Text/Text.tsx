@@ -1,6 +1,8 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import cn from 'classnames';
 import './Text.css';
+import { Title } from '../Title/Title';
+import { Paragraph } from '../Paragraph/Paragraph';
 
 interface ITextProps {
   title: string;
@@ -14,11 +16,13 @@ export const Text: FC<ITextProps> = ({ title, paragraphs, className, grouped }) 
 
   return (
     <div className={cn('text-wrapper', className)}>
-      <h2 className="text-title">{title}</h2>
+      <Title level={2} size="medium" weight="bold">
+        {title}
+      </Title>
       {paragraphGroups.map((group, groupIndex) => (
-        <div key={groupIndex} className={cn({ "paragraph-group": grouped })}>
-          {group.map((paragraph, index) => (
-            <p key={index} className="text-paragraph">{paragraph}</p>
+        <div key={groupIndex} className={cn({ 'paragraph-group': grouped })}>
+          {group.map((text, index) => (
+            <Paragraph key={text.slice(0, 20) + index}>{text}</Paragraph>
           ))}
         </div>
       ))}
@@ -31,7 +35,7 @@ const groupParagraphs = (paragraphs: string[]): string[][] => {
   let currentGroup: string[] = [];
 
   paragraphs.forEach((paragraph) => {
-    if (paragraph.trim() === "") {
+    if (paragraph.trim() === '') {
       if (currentGroup.length > 0) {
         groups.push(currentGroup);
         currentGroup = [];
@@ -46,4 +50,4 @@ const groupParagraphs = (paragraphs: string[]): string[][] => {
   }
 
   return groups;
-}
+};

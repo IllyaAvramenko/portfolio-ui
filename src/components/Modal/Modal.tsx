@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
-import "./Modal.css";
+import React, { useEffect, useRef, useState } from 'react';
+import './Modal.css';
+import { useBodyScrollLock } from '../../hooks';
 
 type ModalProps = {
   isOpen: boolean;
@@ -56,21 +57,10 @@ export const Modal: React.FC<ModalProps> = ({
     }
   }, [isOpen]);
 
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isOpen]);
+  useBodyScrollLock(isOpen);
 
   const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    // @ts-ignore
-    if (!event.target.classList.contains('modal-image')) {
+    if (!(event.target as HTMLElement).classList.contains('modal-image')) {
       onClose();
     }
   };
@@ -82,21 +72,10 @@ export const Modal: React.FC<ModalProps> = ({
       <button className="modal-close" onClick={onClose}>
         &times;
       </button>
-      <div
-        className="modal-content"
-        ref={contentRef}
-      >
+      <div className="modal-content" ref={contentRef}>
         <div className="modal-image-container">
-          <img
-            src={imageSrc}
-            alt={title}
-            ref={imageRef}
-            className="modal-image"
-          />
-          <div
-            className="modal-info"
-            style={{ width: `${imageDimensions.width}px` }}
-          >
+          <img src={imageSrc} alt={title} ref={imageRef} className="modal-image" />
+          <div className="modal-info" style={{ width: `${imageDimensions.width}px` }}>
             <h3>{title}</h3>
             <p>
               {dimensions} {medium}
